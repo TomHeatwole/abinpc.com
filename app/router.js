@@ -7,6 +7,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('scores');
+  this.route('picker');
+  this.route('picks');
+  this.route('records');
+  this.route('rules');
 });
 
 export default Router;
