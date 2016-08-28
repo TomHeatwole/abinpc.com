@@ -1,7 +1,12 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+
   var ENV = {
+    firebase: {
+      authDomain: 'abinpc.firebaseio.com/',
+      databaseURL: 'https://abinpc-66e63.firebaseio.com/'
+    },
     modulePrefix: 'abinpc',
     environment: environment,
     rootURL: '/',
