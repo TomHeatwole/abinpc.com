@@ -22,12 +22,6 @@ export default Ember.Component.extend({
     },
     rules() {
       this.get('router').transitionTo('rules');
-      var newPlayer = this.get('store').createRecord('player', {
-	name: 'player1',
-	accessKey: '37x8e',
-	score: 0
-      });
-      newPlayer.save();
     }
   }
 });
