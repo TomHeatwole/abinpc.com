@@ -5,6 +5,7 @@ The number refers to the seed. So team B5 is the 5 seed in the second region. Ch
 models/regionset to see how the regions are numbered.
 */
 export default DS.Model.extend({
+  season: DS.attr('string'), // Determines which season of abinpc this data belongs to
   A1: DS.attr('string'),
   A2: DS.attr('string'),
   A3: DS.attr('string'),

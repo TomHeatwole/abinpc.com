@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   //team1 and team2 will be referred to by their code, not their team name. ex. A1, C14, etc
+  season: DS.attr('string'), // Determines which season of abinpc this data belongs to
   team1: DS.attr('string'),
   team2: DS.attr('string'),  
   /*
