@@ -1,4 +1,5 @@
 {{outlet}}
+{{nav-bar}}
 
 {{!--
 I'm never going to bother styling this page because is only going to be viewed
@@ -6,13 +7,18 @@ by my father and myself, and neither of us care what it looks like.
 --}}
 
 {{#unless correctPassword}}
-  Enter the admin password: <br>
-  {{input type="password" value=enteredPassword}} <br>
-  {{#if incorrectPassword}}
-    <p style="color: RED">Incorrect password.</p>
-  {{else}}
-  {{/if}}
-  <button {{action "submitPassword"}}>Submit</button>
+  <form>
+    Enter the admin password: <br>
+    {{input type="password" value=enteredPassword}} <br>
+    {{#if incorrectPassword}}
+      <p style="color: RED">Incorrect password.</p>
+    {{else}}
+    {{/if}}
+    <button {{action "submitPassword"}}>Submit</button>
+  </form>
 {{else}}
-  You got in!
+  Welcome, Admin! <br><br>
+  <button action="newSeason">New season</button><br>
+  <button action="enterResults">Enter results</button><br>
+  <button action="generateKeyseys">Generate access keys</button><br>
 {{/unless}}
