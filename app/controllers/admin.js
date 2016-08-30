@@ -5,6 +5,11 @@ export default Ember.Controller.extend({
   correctPassword: false,
   incorrectPassword: false,
   enteredPassword: '',
+  
+  keysMenu: false,
+  seasonMenu: false, 
+  resultsmenu: false,
+  taskSelected: false,
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
     is temporary and not even a little bit secure as it is. If anybody has the URL to my database, 
@@ -30,7 +35,7 @@ export default Ember.Controller.extend({
       var self = this;
       this.store.findRecord('admin-password', 'pass1').then(function(adminPassword) {
         var hash = adminPassword.get('hash');
-        if (self.get('enteredPassword') != '') {
+        if (self.get('enteredPassword') !== '') {
           if (self.hash(self.get('enteredPassword')) === hash) {
 	    self.set('correctPassword', true);
           } else {
@@ -38,6 +43,34 @@ export default Ember.Controller.extend({
           }
         }
       });
+    },
+    
+    newSeason() {
+      this.set('keysMenu', false);
+      this.set('resultsMenu', false);
+      this.set('seasonMenu', true);
+      this.set('taskSelected', true);
+    },
+
+    enterResults() {
+      this.set('keysMenu', false);
+      this.set('resultsMenu', true);
+      this.set('seasonMenu', false);
+      this.set('taskSelected', true);
+    },
+
+    generateKeys() {
+      this.set('keysMenu', true);
+      this.set('resultsMenu', false);
+      this.set('seasonMenu', false);
+      this.set('taskSelected', true);
+    },
+
+    backToTasks() { 
+      this.set('keysMenu', false);
+      this.set('resultsMenu', false);
+      this.set('seasonMenu', false);
+      this.set('taskSelected', false);
     }
   }  
 });

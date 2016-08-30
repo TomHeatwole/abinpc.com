@@ -7,6 +7,10 @@ export default Ember.Route.extend({
     controller.set('correctPassword', false);
     controller.set('incorrectPassword', false);
     controller.set('enteredPassword', '');
+    controller.set('keysMenu', false);
+    controller.set('seasonMenu', false);
+    controller.set('resultsMenu', false);
+    controller.set('taskSelected', false);
   } 
 
 });

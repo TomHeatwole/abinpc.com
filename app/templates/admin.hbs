@@ -17,8 +17,21 @@ by my father and myself, and neither of us care what it looks like.
     <button {{action "submitPassword"}}>Submit</button>
   </form>
 {{else}}
+  {{#unless taskSelected}}
   Welcome, Admin! <br><br>
-  <button action="newSeason">New season</button><br>
-  <button action="enterResults">Enter results</button><br>
-  <button action="generateKeyseys">Generate access keys</button><br>
+    <button {{action "newSeason"}}>New season</button><br>
+    <button {{action "enterResults"}}>Enter results</button><br>
+    <button {{action "generateKeys"}}>Generate access keys</button><br>
+  {{else}} 
+    {{#if seasonMenu}}
+      This is the new season menu
+    {{/if}}
+    {{#if resultsMenu}}
+      This is the enter results menu
+    {{/if}}
+    {{#if keysMenu}}
+      This is the generate keys menu
+    {{/if}}
+    <br><br><button {{action "backToTasks"}}>Other admin tasks</button>
+  {{/unless}}
 {{/unless}}

@@ -4,6 +4,10 @@ module.exports = function(environment) {
 
   var ENV = {
     firebase: {
+      /*
+      These URLs are for the public database I used while developing the app.
+      The actual database is not shared with the public.
+      */
       authDomain: 'abinpc.firebaseio.com/',
       databaseURL: 'https://abinpc-66e63.firebaseio.com/'
     },
