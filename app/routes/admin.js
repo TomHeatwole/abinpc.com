@@ -11,6 +11,12 @@ export default Ember.Route.extend({
     controller.set('seasonMenu', false);
     controller.set('resultsMenu', false);
     controller.set('taskSelected', false);
+    controller.set('keyCount', 0);
+    
+    // Find out if we are currently allowing picks.
+    this.store.findRecord('admin', 1).then(function(admin) {
+      controller.set('allowPicks', admin.get('pre'));
+    });
   } 
 
 });

@@ -1,6 +1,6 @@
 {{outlet}}
 {{nav-bar}}
-
+<br>
 {{!--
 I'm never going to bother styling this page because is only going to be viewed
 by my father and myself, and neither of us care what it looks like.
@@ -19,9 +19,14 @@ by my father and myself, and neither of us care what it looks like.
 {{else}}
   {{#unless taskSelected}}
   Welcome, Admin! <br><br>
-    <button {{action "newSeason"}}>New season</button><br>
-    <button {{action "enterResults"}}>Enter results</button><br>
-    <button {{action "generateKeys"}}>Generate access keys</button><br>
+    <button {{action "newSeasonOn"}}>New season</button><br>
+    <button {{action "enterResultsOn"}}>Enter results</button><br>
+    <button {{action "generateKeysOn"}}>Generate access keys</button><br>
+    {{#if allowPicks}}
+      <button {{action "stopAllowingPicks"}}>Stop allowing picks</button><br>
+    {{else}}
+      <button {{action "startAllowingPicks"}}>Start allowing picks</button><br>
+    {{/if}}
   {{else}} 
     {{#if seasonMenu}}
       This is the new season menu
@@ -30,7 +35,11 @@ by my father and myself, and neither of us care what it looks like.
       This is the enter results menu
     {{/if}}
     {{#if keysMenu}}
-      This is the generate keys menu
+      How many keys do you want to generate? {{input value=keyCount}}
+      <button {{action "generate"}}>generate</button>
+      {{#each newKeys as |key|}}
+        <br>{{key}}
+      {{/each}}
     {{/if}}
     <br><br><button {{action "backToTasks"}}>Other admin tasks</button>
   {{/unless}}

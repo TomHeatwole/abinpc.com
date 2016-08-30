@@ -10,6 +10,10 @@ export default Ember.Controller.extend({
   seasonMenu: false, 
   resultsmenu: false,
   taskSelected: false,
+  newKeys: [],
+
+  keyCount: 0,
+  allowPicks: false,
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
     is temporary and not even a little bit secure as it is. If anybody has the URL to my database, 
@@ -29,12 +33,21 @@ export default Ember.Controller.extend({
     }
     return hash;
   },
+ 
+  makeKey: function() { 
+      var text = "";
+      var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      for( var i=0; i < 8; i++ ) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+  },
 
   actions: {
     submitPassword() {
       var self = this;
-      this.store.findRecord('admin-password', 'pass1').then(function(adminPassword) {
-        var hash = adminPassword.get('hash');
+      this.store.findRecord('admin', 1).then(function(admin) {
+        var hash = admin.get('hash');
         if (self.get('enteredPassword') !== '') {
           if (self.hash(self.get('enteredPassword')) === hash) {
 	    self.set('correctPassword', true);
@@ -45,25 +58,57 @@ export default Ember.Controller.extend({
       });
     },
     
-    newSeason() {
+    newSeasonOn() {
       this.set('keysMenu', false);
       this.set('resultsMenu', false);
       this.set('seasonMenu', true);
       this.set('taskSelected', true);
     },
 
-    enterResults() {
+    enterResultsOn() {
       this.set('keysMenu', false);
       this.set('resultsMenu', true);
       this.set('seasonMenu', false);
       this.set('taskSelected', true);
     },
 
-    generateKeys() {
+    generateKeysOn() {
       this.set('keysMenu', true);
       this.set('resultsMenu', false);
       this.set('seasonMenu', false);
       this.set('taskSelected', true);
+      this.set('newKeys', []);
+    },
+
+    generate() {
+      var self = this;
+      var newKeys = [];
+      for (var i = 0; i < this.get('keyCount'); i++) {
+        var key = this.store.createRecord('key');
+	var accessKey = self.makeKey();
+	newKeys.push(accessKey);
+	key.set('accessKey', accessKey);
+	key.save(); 
+      }
+      this.set('newKeys', newKeys);
+    },
+
+    startAllowingPicks() {      
+      this.store.findRecord('admin', 1).then(function(admin) {
+	admin.set('pre', true);
+	admin.save();
+      });
+      this.set('allowPicks',true);
+      window.alert('Picks are now allowed for the current season.');
+    },
+
+    stopAllowingPicks() {
+      this.store.findRecord('admin', 1).then(function(admin) {
+	admin.set('pre', false);
+	admin.save();
+      });
+      this.set('allowPicks', false);
+      window.alert('You have disabled picking for the current season.');
     },
 
     backToTasks() { 
@@ -71,6 +116,7 @@ export default Ember.Controller.extend({
       this.set('resultsMenu', false);
       this.set('seasonMenu', false);
       this.set('taskSelected', false);
+      this.set('keyCount', 0);
     }
-  }  
+  }
 });
