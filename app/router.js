@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('picks');
   this.route('records');
   this.route('rules');
+  this.route('admin');
 });
 
 export default Router;

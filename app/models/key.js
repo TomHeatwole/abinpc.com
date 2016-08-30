@@ -13,5 +13,5 @@ export default DS.Model.extend({
   to limit users to one set of picks while still accommodating for users who are
   not necessarily good with computers.
   */
-  accessKey: Ds.attr('string')
+  accessKey: DS.attr('string')
 });
