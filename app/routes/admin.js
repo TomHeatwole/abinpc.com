@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-  
+export default Ember.Route.extend({ 
+
   setupController: function(controller, model) {
     this._super(controller, model);
     controller.set('correctPassword', false);
@@ -16,6 +16,19 @@ export default Ember.Route.extend({
     // Find out if we are currently allowing picks.
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre'));
+    });
+
+    /*
+      currentGames stores all of the games where both team1 and team2 have been determined.
+      But no winner has been determined. This list is passed into the enter-results 
+      component so the admin can see which a list of possible games to enter the results.
+    */
+    var season = '';
+    this.store.findRecord('admin', 1).then(function(admin) {
+      season = admin.get('season');
+    });
+    this.store.query('game', {filter: {season: season}}).then(function(games) {
+      controller.set('gameList', games);
     });
   } 
 

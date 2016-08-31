@@ -88,7 +88,7 @@ export default Ember.Component.extend({
       game.set('team1', team1);
       game.set('team2', team2);
       game.set('gameNumber', gameNumber);
-      game.set('winner', '');
+      game.set('winner', 'TBD'),
       game.save();
   },
 
@@ -233,7 +233,7 @@ export default Ember.Component.extend({
       */
 
       for (i = 33; i < 64; i++) {
-	this.createGame(i, '', '');
+	this.createGame(i, 'TBD', 'TBD');
       }
       this.set('submitted', true);
     }

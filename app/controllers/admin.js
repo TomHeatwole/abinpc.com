@@ -8,12 +8,15 @@ export default Ember.Controller.extend({
   
   keysMenu: false,
   seasonMenu: false, 
-  resultsmenu: false,
+  resultsMenu: false,
   taskSelected: false,
   newKeys: [],
 
   keyCount: 0,
   allowPicks: false,
+
+  gameList: [],
+
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
     is temporary and not even a little bit secure as it is. If anybody has the URL to my database, 
@@ -21,6 +24,7 @@ export default Ember.Controller.extend({
     in the public database. In reality storing the hash is hardly any safer, but I suppose it's good
     practice. Once again, the current backend is temporary anyway. This is the has function.
   */
+
   hash: function(str) {
     var hash = 0;
     if (str.length === 0) {

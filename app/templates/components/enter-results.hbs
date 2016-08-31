@@ -1,0 +1,12 @@
+{{yield}}
+
+Choose which game to enter results for:
+<br>
+<select value=selectedGame {{action "updateSelection"}}>
+  <option>--Select game--</option>
+  {{#each gameList as |game|}}
+    <option value={{game}}>
+       {{game.team1}} vs. {{game.team2}}
+    </option>
+  {{/each}}  
+</select>
