@@ -18,7 +18,12 @@ export default Ember.Mixin.create({
   // **Position in attributes array corresponds with values array**
 
 
-  filterQuery: function(model, attributes, values) { 
-    console.log('hello world');
+  filterQuery: function(model, attributes, values) {
+    var r = [];
+    this.store.findAll(model).then(function(objects) {
+      for (var i=0; i<objects.size(); i++)
+	console.log('is this working?');
+    });
+    return r;
   }
 });
