@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import QueryFilterMixinMixin from '../mixins/query-filter-mixin.js;';
 
-export default Ember.Route.extend({ 
+export default Ember.Route.extend(QueryFilterMixinMixin, { 
 
   setupController: function(controller, model) {
     this._super(controller, model);
@@ -26,8 +27,9 @@ export default Ember.Route.extend({
     var season = '';
     this.store.findRecord('admin', 1).then(function(admin) {
       season = admin.get('season');
+      console.log('are we getting here?');
     });
-    this.store.query('game', {filter: {season: season}}).then(function(games) {
+    this.store.query('game', {orderBy: 'season'}).then(function(games) {
       controller.set('gameList', games);
     });
   } 
