@@ -1,0 +1,104 @@
+{{yield}}
+{{#unless submitted}}
+  New season name: {{input value=name}} <br><br>
+  <div class="row">
+    <div class="col-md-4">
+      Top left region: {{input value=A}}    
+    </div>
+    <div class="col-md-4">
+      Top right region: {{input value=C}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      Bottom left region: {{input value=B}}    
+    </div>
+    <div class="col-md-4">
+      Bottom right region: {{input value=D}}
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-3">
+      Top left region teams: <br>
+      1.  {{input value=A1}} <br>
+      16. {{input value=A16}} <br>
+      8.  {{input value=A8}} <br>
+      9.  {{input value=A9}} <br>
+      5.  {{input value=A5}} <br>
+      12. {{input value=A12}} <br>
+      4.  {{input value=A4}} <br>
+      13. {{input value=A13}} <br>
+      6.  {{input value=A6}} <br>
+      11. {{input value=A11}} <br>
+      3.  {{input value=A3}} <br>
+      14. {{input value=A14}} <br>
+      7.  {{input value=A7}} <br>
+      10. {{input value=A10}} <br>
+      2.  {{input value=A2}} <br>
+      15. {{input value=A15}}
+    </div>
+    <div class="col-md-3">
+      Bottom left region teams: <br>
+      1.  {{input value=B1}} <br>
+      16. {{input value=B16}} <br>
+      8.  {{input value=B8}} <br>
+      9.  {{input value=B9}} <br>
+      5.  {{input value=B5}} <br>
+      12. {{input value=B12}} <br>
+      4.  {{input value=B4}} <br>
+      13. {{input value=B13}} <br>
+      6.  {{input value=B6}} <br>
+      11. {{input value=B11}} <br>
+      3.  {{input value=B3}} <br>
+      14. {{input value=B14}} <br>
+      7.  {{input value=B7}} <br>
+      10. {{input value=B10}} <br>
+      2.  {{input value=B2}} <br>
+      15. {{input value=B15}} <br>
+    </div>
+    <div class="col-md-3">
+      Top right region teams: <br>
+      1.  {{input value=C1}} <br>
+      16. {{input value=C16}} <br>
+      8.  {{input value=C8}} <br>
+      9.  {{input value=C9}} <br>
+      5.  {{input value=C5}} <br>
+      12. {{input value=C12}} <br>
+      4.  {{input value=C4}} <br>
+      13. {{input value=C13}} <br>
+      6.  {{input value=C6}} <br>
+      11. {{input value=C11}} <br>
+      3.  {{input value=C3}} <br>
+      14. {{input value=C14}} <br>
+      7.  {{input value=C7}} <br>
+      10. {{input value=C10}} <br>
+      2.  {{input value=C2}} <br>
+      15. {{input value=C15}}
+    </div>
+    <div class="col-md-3">
+      Bottom right region teams: <br>
+      1.  {{input value=D1}} <br>
+      16. {{input value=D16}} <br>
+      8.  {{input value=D8}} <br>
+      9.  {{input value=D9}} <br>
+      5.  {{input value=D5}} <br>
+      12. {{input value=D12}} <br>
+      4.  {{input value=D4}} <br>
+      13. {{input value=D13}} <br>
+      6.  {{input value=D6}} <br>
+      11. {{input value=D11}} <br>
+      3.  {{input value=D3}} <br>
+      14. {{input value=D14}} <br>
+      7.  {{input value=D7}} <br>
+      10. {{input value=D10}} <br>
+      2.  {{input value=D2}} <br>
+      15. {{input value=D15}} <br>
+    </div>
+  </div>
+  <br><br>
+  <p style="color: RED">PRESSING SUBMIT CAN ONLY BE UNDONE THROUGH THE DATABASE</p>
+  <button {{action "submit"}}>Submit</button><br><br>
+{{else}}
+  <p style="color: GREEN">New season has been created.</p>
+{{/unless}}
