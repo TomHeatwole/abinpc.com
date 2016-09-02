@@ -32,7 +32,16 @@ by my father and myself, and neither of us care what it looks like.
       {{new-season}} 
     {{/if}}
     {{#if resultsMenu}}
-      {{enter-results}}
+      Choose which game to enter results for:
+      <br>
+      <select value=selectedGame {{action "updateSelection"}}>
+	<option>--Select game--</option>
+	{{#each gameList as |game|}}
+	  <option value={{game}}>
+	    {{game.team1}} vs. {{game.team2}}
+	  </option>
+	{{/each}}  
+      </select>
     {{/if}}
     {{#if keysMenu}}
       How many keys do you want to generate? {{input value=keyCount}}

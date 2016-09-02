@@ -20,9 +20,19 @@ export default Ember.Mixin.create({
 
   filterQuery: function(model, attributes, values) {
     var r = [];
+    var include = true;
     this.store.findAll(model).then(function(objects) {
-      for (var i=0; i<objects.size(); i++)
-	console.log('is this working?');
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (o.get(attributes[i]) !== values[i]) {
+	    include = false;
+	  }
+	}
+	if (include) {
+	  r.push(o);	
+        }
+      });
     });
     return r;
   }

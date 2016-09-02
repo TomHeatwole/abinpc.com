@@ -15,6 +15,8 @@ export default Ember.Controller.extend({
   keyCount: 0,
   allowPicks: false,
 
+  gameList: [],
+
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
     is temporary and not even a little bit secure as it is. If anybody has the URL to my database, 
@@ -111,6 +113,10 @@ export default Ember.Controller.extend({
       });
       this.set('allowPicks', false);
       window.alert('You have disabled picking for the current season.');
+    },
+
+    updateSelection() {
+      console.log('when does this run?');
     },
 
     backToTasks() { 

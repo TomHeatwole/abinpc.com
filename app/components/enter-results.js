@@ -11,9 +11,4 @@ export default Ember.Component.extend(QueryFilterMixinMixin, {
     this._super();
     console.log('hello world!! :D :D :D :D');
   },
-  actions: {
-    updateSelection() {
-      console.log('when does this run?');
-    }
-  }
 });

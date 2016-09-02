@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import QueryFilterMixin from 'abinpc/mixins/query-filter-mixin';
 
-export default Ember.Route.extend(QueryFilterMixinMixin, { 
+export default Ember.Route.extend(QueryFilterMixin, { 
 
   setupController: function(controller, model) {
     this._super(controller, model);
@@ -23,14 +24,15 @@ export default Ember.Route.extend(QueryFilterMixinMixin, {
       But no winner has been determined. This list is passed into the enter-results 
       component so the admin can see which a list of possible games to enter the results.
     */
-/*
+
     var season = '';
     this.store.findRecord('admin', 1).then(function(admin) {
       season = admin.get('season');
+      console.log(season);
     });
-    
-//    controller.set(this.filterQuery('game',['season'],[season]));
-*/
+    console.log(season);
+    controller.set('gameList', this.filterQuery('game',['season'],['testseason22']));
+
   } 
 
 });
