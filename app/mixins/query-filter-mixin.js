@@ -18,14 +18,42 @@ export default Ember.Mixin.create({
   // **Position in attributes array corresponds with values array**
 
 
-  filterQuery: function(model, attributes, values) {
+  filterEqual: function(model, attributes, values) {
+    var r = [];
+    var include = true;
+    var index = 0;
+    this.store.findAll(model).then(function(objects) {
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (o.get(attributes[i]) !== values[i]) {
+	    include = false;
+	  }
+	}
+	if (include) { 
+	  r.push(o);
+        }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
+      });
+    });
+  },
+
+  // param: model - string - name of the model that should be querried
+  // param: attributes - array - names of the attributes that should be filtered by
+  // param: values - array - required values of the filtered attributes
+  // **Position in attributes array corresponds with values array**
+
+  filterNotEqual: function(model, attributes, vallues) {
     var r = [];
     var include = true;
     this.store.findAll(model).then(function(objects) {
       objects.forEach(function(o) {
 	include = true;
 	for (var i = 0; i < attributes.length; i++) {
-	  if (o.get(attributes[i]) !== values[i]) {
+	  if (o.get(attributes[i]) === values[i]) {
 	    include = false;
 	  }
 	}
@@ -35,5 +63,6 @@ export default Ember.Mixin.create({
       });
     });
     return r;
-  }
+  },
+  
 });

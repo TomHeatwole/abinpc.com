@@ -20,19 +20,12 @@ export default Ember.Route.extend(QueryFilterMixin, {
     });
 
     /*
-      currentGames stores all of the games where both team1 and team2 have been determined.
+      gameList stores all of the games where both team1 and team2 have been determined.
       But no winner has been determined. This list is passed into the enter-results 
       component so the admin can see which a list of possible games to enter the results.
     */
 
-    var season = '';
-    this.store.findRecord('admin', 1).then(function(admin) {
-      season = admin.get('season');
-      console.log(season);
-    });
-    console.log(season);
-    controller.set('gameList', this.filterQuery('game',['season'],['testseason22']));
-
+    controller.set('filterEqual', this.filterEqual);
   } 
 
 });

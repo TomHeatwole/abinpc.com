@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
   allowPicks: false,
 
   gameList: [],
+  filterEqual: function(){},
 
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
@@ -74,6 +75,16 @@ export default Ember.Controller.extend({
       this.set('resultsMenu', true);
       this.set('seasonMenu', false);
       this.set('taskSelected', true);
+      var self=this;
+      this.store.findRecord('admin', 1).then(function(admin) {
+	var season = admin.get('season');
+
+
+//	TODO: The line below should return the gameList but JavaScript's synchronous behaivor is
+//	  ruining that for you. Do some research on the best way to prevent synchronous behaivor.
+
+//	  self.filterEqual('game',['season'],[season]);
+      }); 
     },
 
     generateKeysOn() {
