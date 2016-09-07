@@ -46,9 +46,10 @@ export default Ember.Mixin.create({
   // param: values - array - required values of the filtered attributes
   // **Position in attributes array corresponds with values array**
 
-  filterNotEqual: function(model, attributes, vallues) {
+  filterNotEqual: function(model, attributes, values) {
     var r = [];
     var include = true;
+    var index = 0;
     this.store.findAll(model).then(function(objects) {
       objects.forEach(function(o) {
 	include = true;
@@ -57,12 +58,180 @@ export default Ember.Mixin.create({
 	    include = false;
 	  }
 	}
-	if (include) {
-	  r.push(o);	
+	if (include) { 
+	  r.push(o);
         }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
       });
     });
-    return r;
   },
-  
+
+  // param: model - string - name of the model that should be querried
+  // param: attributes - array - names of the attributes that should be filtered by
+  // param: values - array - required values of the filtered attributes
+  // **Position in attributes array corresponds with values array**
+
+  filterGreaterThan: function(model, attributes, values) {
+    var r = [];
+    var include = true;
+    var index = 0;
+    this.store.findAll(model).then(function(objects) {
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (o.get(attributes[i]) <= values[i]) {
+	    include = false;
+	  }
+	}
+	if (include) { 
+	  r.push(o);
+        }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
+      });
+    });
+  },
+
+  // param: model - string - name of the model that should be querried
+  // param: attributes - array - names of the attributes that should be filtered by
+  // param: values - array - required values of the filtered attributes
+  // **Position in attributes array corresponds with values array**
+
+  filterLessThan: function(model, attributes, values) {
+    var r = [];
+    var include = true;
+    var index = 0;
+    this.store.findAll(model).then(function(objects) {
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (o.get(attributes[i]) >= values[i]) {
+	    include = false;
+	  }
+	}
+	if (include) { 
+	  r.push(o);
+        }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
+      });
+    });
+  },
+
+  // param: model - string - name of the model that should be querried
+  // param: attributes - array - names of the attributes that should be filtered by
+  // param: values - array - required values of the filtered attributes
+  // **Position in attributes array corresponds with values array**
+
+  filterGreaterThanOrEqualTo: function(model, attributes, values) {
+    var r = [];
+    var include = true;
+    var index = 0;
+    this.store.findAll(model).then(function(objects) {
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (o.get(attributes[i]) < values[i]) {
+	    include = false;
+	  }
+	}
+	if (include) { 
+	  r.push(o);
+        }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
+      });
+    });
+  },
+
+  // param: model - string - name of the model that should be querried
+  // param: attributes - array - names of the attributes that should be filtered by
+  // param: values - array - required values of the filtered attributes
+  // **Position in attributes array corresponds with values array**
+
+  filterLessThanOrEqualTo: function(model, attributes, values) {
+    var r = [];
+    var include = true;
+    var index = 0;
+    this.store.findAll(model).then(function(objects) {
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (o.get(attributes[i]) > values[i]) {
+	    include = false;
+	  }
+	}
+	if (include) { 
+	  r.push(o);
+        }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
+      });
+    });
+  },
+
+  // param: model - string - name of the model that should be querried
+  // param: attributes - array - names of the attributes that should be filtered by
+  // param: operators - array - comparison to be run (in quotes): possible: '==','===',
+//	 '!=', '!==', '>', '>=' '<', '<='
+  // param: values - array - required values of the filtered attributes
+  // **Position in attributes array corresponds with values array**
+
+  filterCustom: function(model, attributes, operators, values) {
+    var r = [];
+    var include = true;
+    var index = 0;
+    this.store.findAll(model).then(function(objects) {
+      objects.forEach(function(o) {
+	include = true;
+	for (var i = 0; i < attributes.length; i++) {
+	  if (operators[i] === '==' || operators[i] === '===') {
+	    if (o.get(attributes[i]) !== values[i]) {
+	      include = false;
+	    }
+	  } else if (operators[i] === '!=' || operators[i] === '!==') {	    
+	    if (o.get(attributes[i]) === values[i]) {
+	      include = false;
+	    }
+	  } else if (operators[i] === '>') {
+	    if (o.get(attributes[i]) <= values[i]) {
+	      include = false;
+	    }
+	  } else if (operators[i] === '>=') {
+	    if (o.get(attributes[i]) < values[i]) {
+	      include = false;
+	    }
+	  } else if (operators[i] === '<') {
+	    if (o.get(attributes[i]) >= values[i]) {
+	      include = false;
+	    }
+	  } else if (operators[i] === '<=') {
+	    if (o.get(attributes[i]) > values[i]) {
+	      include = false;
+	    }
+	  } else {
+	    return 'Error: operator not recognized';
+	  }
+	}
+	if (include) { 
+	  r.push(o);
+        }
+	index ++;
+	if (index === objects.get('length')) {
+	  return r;
+	}
+      });
+    });
+  }
 });
