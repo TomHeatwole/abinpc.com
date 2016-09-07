@@ -15,8 +15,12 @@ export default Ember.Controller.extend({
   keyCount: 0,
   allowPicks: false,
 
+    /*
+      gameList stores all of the games where both team1 and team2 have been determined.
+      But no winner has been determined. This list is passed into the enter-results 
+      component so the admin can see which a list of possible games to enter the results.
+    */
   gameList: [],
-  filterEqual: function(){},
 
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
@@ -78,12 +82,20 @@ export default Ember.Controller.extend({
       var self=this;
       this.store.findRecord('admin', 1).then(function(admin) {
 	var season = admin.get('season');
-
-
-//	TODO: The line below should return the gameList but JavaScript's synchronous behaivor is
-//	  ruining that for you. Do some research on the best way to prevent synchronous behaivor.
-
-//	  self.filterEqual('game',['season'],[season]);
+	self.store.findAll('game').then(function(games) {
+          var list = [];
+          var index = 0;
+          games.forEach(function(game) {
+	    if (game.get('season') === season && game.get('winner') === 'TBD' &&
+		game.get('team1') !== 'TBD' && game.get('team2') !== 'TBD') {
+	      list.push(game);
+	    }
+	    index++;
+	    if (index == games.get('length')) {
+	      self.set('gameList', list);
+	    }
+	  });
+	});
       }); 
     },
 

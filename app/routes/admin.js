@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import QueryFilterMixin from 'abinpc/mixins/query-filter-mixin';
+// import QueryFilterMixin from 'abinpc/mixins/query-filter-mixin';
 
-export default Ember.Route.extend(QueryFilterMixin, { 
+export default Ember.Route.extend({ 
 
   setupController: function(controller, model) {
     this._super(controller, model);
@@ -18,14 +18,5 @@ export default Ember.Route.extend(QueryFilterMixin, {
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre'));
     });
-
-    /*
-      gameList stores all of the games where both team1 and team2 have been determined.
-      But no winner has been determined. This list is passed into the enter-results 
-      component so the admin can see which a list of possible games to enter the results.
-    */
-
-    controller.set('filterEqual', this.filterEqual);
   } 
-
 });

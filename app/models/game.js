@@ -12,5 +12,5 @@ export default DS.Model.extend({
   */
   gameNumber: DS.attr('number'),
   //Winner will take the team code. ex. A2, D9, ect...
-  winner: DS.attr('number')
+  winner: DS.attr('string')
 });
