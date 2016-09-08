@@ -20,7 +20,13 @@ export default Ember.Controller.extend({
       But no winner has been determined. This list is passed into the enter-results 
       component so the admin can see which a list of possible games to enter the results.
     */
+
   gameList: [],
+  teamNames: {},
+  selectedGame: false,
+  selectedTeam1: false,
+  selectedTeam2: false,
+  selectedWinner: '', 
 
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
@@ -50,6 +56,10 @@ export default Ember.Controller.extend({
         text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
       return text;
+  },
+  getTeamName: function(code) {
+    var teamNames = this.get('teamNames');
+    return teamNames[code];
   },
 
   actions: {
@@ -98,6 +108,33 @@ export default Ember.Controller.extend({
 	});
       }); 
     },
+    
+    updateSelection() {
+      var self = this;
+      var id = document.getElementById('gameSelector').value;
+      this.store.findRecord('game', id).then(function(game){
+	self.set('selectedGame', game);
+        self.set('selectedTeam1', self.getTeamName(game.get('team1')));
+	self.set('selectedTeam2', self.getTeamName(game.get('team2')));
+	self.set('selectedWinner', '');
+      });     
+    },
+
+    selectWinner(winner) {
+      if (winner === "team1") {
+	this.set('selectedWinner', this.get('selectedGame').get('team1'));
+      }
+      if (winner === "team2") {
+	this.set('selectedWinner', this.get('selectedGame').get('team2'));
+      }
+    },
+
+    submitWinner() {
+      if (this.get('selectedWinner') !== false) {
+	this.get('selectedGame').set('winner', this.get('selectedWinner'));
+	this.get('selectedGame').save();
+      }
+    },
 
     generateKeysOn() {
       this.set('keysMenu', true);
@@ -136,10 +173,6 @@ export default Ember.Controller.extend({
       });
       this.set('allowPicks', false);
       window.alert('You have disabled picking for the current season.');
-    },
-
-    updateSelection() {
-      console.log('when does this run?');
     },
 
     backToTasks() { 

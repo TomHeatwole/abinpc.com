@@ -34,14 +34,25 @@ by my father and myself, and neither of us care what it looks like.
     {{#if resultsMenu}}
       Choose which game to enter results for:
       <br>
-      <select value=selectedGame {{action "updateSelection"}}>
+      <select id= gameSelector value=selectedGame {{action "updateSelection" selectedGame}}>
 	<option>--Select game--</option>
 	{{#each gameList as |game|}}
-	  <option value={{game}}>
+	  <option value={{game.id}}>
 	    {{game.team1}} vs. {{game.team2}}
 	  </option>
 	{{/each}}  
       </select>
+      {{#if selectedTeam1}}
+	<br><br>
+	Select Winner: 
+	<form>
+	  <button {{action "selectWinner" "team1"}}> {{selectedTeam1}} </button>
+	  <button {{action "selectWinner" "team2"}}> {{selectedTeam2}} </button> <br>
+	  Selected: <b>{{selectedWinner}}</b><br>
+	  <button {{action "submitWinner"}}>Submit</button>
+	</form>
+	<br><br>
+      {{/if}}
     {{/if}}
     {{#if keysMenu}}
       How many keys do you want to generate? {{input value=keyCount}}
