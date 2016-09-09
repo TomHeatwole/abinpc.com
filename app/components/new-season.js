@@ -88,7 +88,7 @@ export default Ember.Component.extend({
       game.set('team1', team1);
       game.set('team2', team2);
       game.set('gameNumber', gameNumber);
-      game.set('winner', 'TBD'),
+      game.set('winner', 'TBD');
       game.save();
   },
 
@@ -111,7 +111,7 @@ export default Ember.Component.extend({
       regions.save();
 
       var teams = store.createRecord('teamset');
-      teans.set('season', this.get('name'));
+      teams.set('season', this.get('name'));
       teams.set('A1', this.get('A1'));
       teams.set('A2', this.get('A2'));
       teams.set('A3', this.get('A3'));

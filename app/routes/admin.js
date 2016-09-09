@@ -1,7 +1,8 @@
 import Ember from 'ember';
 // import QueryFilterMixin from 'abinpc/mixins/query-filter-mixin';
+import NextGameMixin from 'abinpc/mixins/next-game-mixin';
 
-export default Ember.Route.extend({ 
+export default Ember.Route.extend(NextGameMixin, { 
 
   setupController: function(controller, model) {
     this._super(controller, model);
@@ -17,18 +18,18 @@ export default Ember.Route.extend({
     controller.set('selectedTeam1', false);
     controller.set('selectedTeam2', false);
     controller.set('selectedGame', false);
+    controller.set('nextGame', this.get('nextGame'));
     
     // Find out if we are currently allowing picks.
     var self = this;
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre'));
 
-
       
     // Store the team names in a hastable
       self.store.findAll('teamset').then(function(sets){
 	sets.forEach(function(set) {
-	  if (set.get('season') == admin.get('season')) {
+	  if (set.get('season') === admin.get('season')) {
 	    var teamNames = {};
 	    var region = "A";
 	    var code = "";

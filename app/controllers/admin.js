@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
   selectedTeam1: false,
   selectedTeam2: false,
   selectedWinner: '', 
+  nextGame: function () {},
 
   /*
     It's not completely neccessary to hash the password since the current backend (Google firebase)
@@ -89,6 +90,10 @@ export default Ember.Controller.extend({
       this.set('resultsMenu', true);
       this.set('seasonMenu', false);
       this.set('taskSelected', true);
+      this.set('selectedGame', false);
+      this.set('selectedTeam1, false');
+      this.set('selectedTeam2, false');
+      this.set('selectedWinner, false');
       var self=this;
       this.store.findRecord('admin', 1).then(function(admin) {
 	var season = admin.get('season');
@@ -101,7 +106,7 @@ export default Ember.Controller.extend({
 	      list.push(game);
 	    }
 	    index++;
-	    if (index == games.get('length')) {
+	    if (index === games.get('length')) {
 	      self.set('gameList', list);
 	    }
 	  });
@@ -117,7 +122,7 @@ export default Ember.Controller.extend({
         self.set('selectedTeam1', self.getTeamName(game.get('team1')));
 	self.set('selectedTeam2', self.getTeamName(game.get('team2')));
 	self.set('selectedWinner', '');
-      });     
+      });    
     },
 
     selectWinner(winner) {
@@ -130,9 +135,32 @@ export default Ember.Controller.extend({
     },
 
     submitWinner() {
-      if (this.get('selectedWinner') !== false) {
-	this.get('selectedGame').set('winner', this.get('selectedWinner'));
-	this.get('selectedGame').save();
+      if (this.get('selectedWinner')) {
+        var game = this.get('selectedGame');
+        if (this.get('selectedWinner') !== false) {
+  	  game.set('winner', this.get('selectedWinner'));
+	  game.save();
+        }
+        var self = this;
+        this.store.findRecord('admin', 1).then(function(admin) {
+	  var season = admin.get('season');
+	  var nextGame = self.nextGame(game.get('gameNumber'));
+	  if (nextGame[0] !== 63) { 
+	    self.store.findAll('game').then(function(games) {
+	      games.forEach(function(g) {
+	        if (g.get('season') === season && g.get('gameNumber') === nextGame[0]) {
+		  g.set(nextGame[1], self.get('selectedWinner'));
+		  g.save();
+	        }
+	      });
+	    });
+	  }	  
+        });
+        this.set('keysMenu', false);
+        this.set('resultsMenu', false);
+        this.set('seasonMenu', false);
+        this.set('taskSelected', false);
+        this.set('keyCount', 0);
       }
     },
 
