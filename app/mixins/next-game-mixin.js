@@ -5,6 +5,8 @@ import Ember from 'ember';
   a game wil be sent.
 */
 
+//TODO: There may be a problem with the final four games returning correctly. Test this hard
+// before deploying.
 
 export default Ember.Mixin.create({
   nextGame(gameNumber) {
