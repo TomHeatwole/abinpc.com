@@ -26,7 +26,7 @@ export default Ember.Route.extend(NextGameMixin, {
       controller.set('allowPicks', admin.get('pre'));
 
       
-    // Store the team names in a hastable
+    // Store the team names in a map
       self.store.findAll('teamset').then(function(sets){
 	sets.forEach(function(set) {
 	  if (set.get('season') === admin.get('season')) {

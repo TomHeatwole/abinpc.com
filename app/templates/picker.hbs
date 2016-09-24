@@ -1,6 +1,32 @@
 {{outlet}}
-
-
 {{nav-bar}}
 
-<button {{action "test"}}> TEST </button>
+{{#unless allowPicks}}
+  We are not currently allowing picks for this season.
+{{else}}
+  {{#if noneSelected}}
+  Access Key: {{input value=model.accessKey}}<br>
+  Name: {{input value=model.name}}<br><br>
+    {{#unless ACompleted}}
+      <button {{action "selectA"}}>{{AName}} picks</button>
+    {{/unless}}
+    {{#unless BCompleted}}
+      <button {{action "selectB"}}>{{BName}} picks</button>
+    {{/unless}}
+    {{#unless CCompleted}}
+      <button {{action "selectC"}}>{{CName}} picks</button>
+    {{/unless}}
+    {{#unless DCompleted}}
+      <button {{action "selectD"}}>{{DName}} picks</button>
+    {{/unless}}
+  {{else if ASelected}}
+    {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap}}
+  {{else if BSelected}}
+    {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap}}
+  {{else if CSelected}}
+    {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap}}
+  {{else if DSelected}}
+    {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap}}
+  {{else if FSelected}}  
+  {{/if}}
+{{/unless}}

@@ -95,6 +95,9 @@ export default Ember.Controller.extend({
       this.set('selectedTeam2, false');
       this.set('selectedWinner, false');
       var self=this;
+
+      // TODO: (Bug Fix) Currently after creating a new season, before refreshing the page, 
+      // old team names are still displayed when entering picks. 
       this.store.findRecord('admin', 1).then(function(admin) {
 	var season = admin.get('season');
 	self.store.findAll('game').then(function(games) {
