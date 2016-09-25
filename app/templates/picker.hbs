@@ -21,12 +21,18 @@
     {{/unless}}
   {{else if ASelected}}
     {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap}}
+    <button {{action "cont"}}>Continue</button>
   {{else if BSelected}}
     {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap}}
+    <button {{action "cont"}}>Continue</button>
   {{else if CSelected}}
     {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap}}
+    <button {{action "cont"}}>Continue</button>
   {{else if DSelected}}
     {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap}}
+    <button {{action "cont"}}>Continue</button>
   {{else if FSelected}}  
   {{/if}}
 {{/unless}}
+
+<button {{action "submit"}}>Test!</button>

@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
       if (this.get('ACompleted') && this.get('BCompleted') && this.get('CCompleted') && this.get('DCompleted'))
 	this.set('FSelected', true);
       else
-        this.set('noneSelected', false);
+        this.set('noneSelected', true);
     },
     submit(model) {
       model.save();
