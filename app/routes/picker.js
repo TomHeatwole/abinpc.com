@@ -49,7 +49,7 @@ export default Ember.Route.extend({
 
       self.store.findAll('regionset').then(function(sets) {
 	sets.forEach(function(set) {
-	  if (set.get('season') == admin.get('season')) {
+	  if (set.get('season') === admin.get('season')) {
 	    controller.set('AName', set.get('A'));
 	    controller.set('BName', set.get('B'));
 	    controller.set('CName', set.get('C'));

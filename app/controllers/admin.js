@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
           } else {
 	    self.set('incorrectPassword', true);
           }
-        }
+        }       
       });
     },
     

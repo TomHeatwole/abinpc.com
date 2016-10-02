@@ -44,13 +44,14 @@ export default Ember.Controller.extend({
       this.set('BSelected', false);
       this.set('CSelected', false);
       this.set('DSelected', false);
-      if (this.get('ACompleted') && this.get('BCompleted') && this.get('CCompleted') && this.get('DCompleted'))
+      if (this.get('ACompleted') && this.get('BCompleted') && this.get('CCompleted') && this.get('DCompleted')) {
 	this.set('FSelected', true);
-      else
+      } else {
         this.set('noneSelected', true);
+      }
     },
-    submit(model) {
-      model.save();
+    submit() {
+      this.get('model').save();
     }
   }
   // TOOD: Implement validations manually since every Ember valdiations library is pretty awful.
