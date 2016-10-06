@@ -3,7 +3,10 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   
   model() {
-    return this.store.createRecord('player');
+    var m = this.store.createRecord('player');
+    for (var i = 1; i < 64; i++)
+      m.set('pick' + i, '--Select Team--');
+    return m;
   },
   setupController: function(controller, model) {
     this._super(controller, model);
@@ -38,7 +41,7 @@ export default Ember.Route.extend({
 	  	region = "D";
               }
 	      code = region + (i%16 + 1); 
-	      map[code] = set.get(code);
+	      map[code] = '' + (i%16 + 1) + '. '+ set.get(code);
 	      if (code === "D16") {
 		controller.set('teamNameMap', map);
 	      }
