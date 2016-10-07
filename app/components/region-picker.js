@@ -4,21 +4,59 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
     
-  names: {},
   teams: {},
-  games: {},
+  names: {},
+  winners: {},
+  regionAdd: 0,
 
   init: function() {
     this._super();
+    var teams = {};
     var names = {};
-    for (var i = 1; i < 17; i++)
-      names[i] = this.get('teamNameMap')[this.get('region') + i];
+    var winners = {};
+    var games = {};
+    if (this.get('region') === 'B') {
+      this.set('regionAdd', 16); 
+    } else if (this.get('region') === 'C') {
+      this.set('regionAdd', 32);
+    } else if (this.get('regoin') === 'D') {
+      this.set('regionAdd', 48);
+    }
+    for (var i = 1; i < 17; i++) { 
+      teams[i] = this.get('region') + i; // stores teams by team code
+      names[i] = this.get('teamNameMap')[teams[i]]; //stores teams by name
+      winners[i] = 'TBD'; // will store each game winner in order
+      games[i] = this.get('regionAdd') + i; // stores gameNumbers
+    }
+    this.set('teams', teams);
     this.set('names', names);
+    this.set('winners', winners);
   },
 
   actions: {
-    dosomething() {
-       console.log('something');
+    pick() {
+      var regionAdd = this.get('regionAdd');
+      var winners = this.get('winners');
+      for (var i = 1; i < 15; i++) {
+	var w = document.getElementById('p' + i).value; //winner
+	if (w !== '--Select Team--' && w !== 'TBD') {
+	  if (winners[i] !== w && winners[i] !== 'TBD') {
+	    for (var ii = i + 1; ii < 15; ii++) {
+	      if (winners[ii] === winners[i]) {
+		console.log('what' + ii);
+		Ember.set(winners, '' + ii, 'TBD', true);
+	      }
+	    }
+	  }
+	  Ember.set(winners, '' + i, w, true);
+	} else {
+	  Ember.set(winners, '' + i, 'TBD', true);
+	}
+      }
+      this.set('winners', winners);
+    },
+    done() {
+      console.log('done');
     }
   } 
 

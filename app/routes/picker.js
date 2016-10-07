@@ -4,8 +4,9 @@ export default Ember.Route.extend({
   
   model() {
     var m = this.store.createRecord('player');
-    for (var i = 1; i < 64; i++)
-      m.set('pick' + i, '--Select Team--');
+    for (var i = 1; i < 64; i++) {
+      m.set('pick' + i, 'TBD');
+    }
     return m;
   },
   setupController: function(controller, model) {
