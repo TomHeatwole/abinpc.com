@@ -7,7 +7,11 @@ export default Ember.Component.extend({
   teams: {},
   names: {},
   winners: {},
+  games: {},
   regionAdd: 0,
+
+  failure1: false, // Used for validations, failure1 means some picks were not entered
+  failure2: false, // Used for validations, failure2 means some pikcs did not make sense
 
   init: function() {
     this._super();
@@ -31,17 +35,17 @@ export default Ember.Component.extend({
     this.set('teams', teams);
     this.set('names', names);
     this.set('winners', winners);
+    this.set('games', games);
   },
 
   actions: {
     pick() {
-      var regionAdd = this.get('regionAdd');
       var winners = this.get('winners');
-      for (var i = 1; i < 15; i++) {
-	var w = document.getElementById('p' + i).value; //winner
+      for (var i = 1; i < 16; i++) {
+	var w = document.getElementById('p' + i).value; // Winner
 	if (w !== '--Select Team--' && w !== 'TBD') {
-	  if (winners[i] !== w && winners[i] !== 'TBD') {
-	    for (var ii = i + 1; ii < 15; ii++) {
+	  if (winners[i] !== w && winners[i] !== 'TBD') { // Make sure this is a change
+	    for (var ii = i + 1; ii < 16; ii++) {
 	      if (winners[ii] === winners[i]) {
 		Ember.set(winners, '' + ii, 'TBD', true);
 	      }
@@ -51,9 +55,31 @@ export default Ember.Component.extend({
 	} else {
 	  Ember.set(winners, '' + i, 'TBD', true);
 	}
-	// How to change it in the model? Should I do this here or during validation?
+	// This line may need to get moved into the "continue" response
+	this.get('model').set('pick' + this.get('games')[i], w);
       }
       this.set('winners', winners);
     },
+    check() {
+      this.set('failure1', false);
+      this.set('failure2', false);
+      var games = this.get('games');
+      for (var i = 1; i < 16; i++) {
+	var w = this.get('model').get('pick' + games[i]);
+	if (w === 'TBD' || w === '--Select Team--') {
+	  this.set('failure1', true);
+	}
+        if (i > 8) {
+	  //2 * i - 16 and 2 * i - 17 'child' games of any given game
+	  if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
+		this.get('model').get('pick' + games[2*i - 17]) !== w) {
+	    this.set('failure2', true);
+	  } 
+	}
+      }
+      if (this.get('failure1') === false && this.get('failure2') === false) {
+	this.sendAction(); // TODO: Parameter for sendaction
+      }
+    }
   } 
 });

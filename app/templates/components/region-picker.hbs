@@ -76,7 +76,6 @@
       <option>{{winners.[13]}}</option>
       <option>{{winners.[14]}}</option>
     </select>
-    {{winners.[13]}}
   </div>
 </div>
 <div class="row">
@@ -145,3 +144,12 @@
     </select>
   </div>
 </div>
+<br>
+<br>
+<button {{action "check"}}>Continue</button>
+
+{{#if failure2}} {{!-- Check failure2 first because of edge case where failure2 processes as failure1--}}
+  <p style="Color:RED"> Error: Some picks do not make sense with previous picks. </p>
+{{else if failure1}}
+  <p style="Color:RED"> Please make sure that all of the picks have been entered. </p>
+{{/if}}
