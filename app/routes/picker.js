@@ -42,7 +42,7 @@ export default Ember.Route.extend({
 	  	region = "D";
               }
 	      code = region + (i%16 + 1); 
-	      map[code] = '' + (i%16 + 1) + '. '+ set.get(code);
+	      map[code] = '' + (i%16 + 1) + '. '+ set.get(code); //Eaxmple: map[A1] = 1. Kentucky
 	      if (code === "D16") {
 		controller.set('teamNameMap', map);
 	      }

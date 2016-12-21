@@ -20,7 +20,7 @@
       <button {{action "selectD"}}>{{DName}} picks</button>
     {{/unless}}
   {{else if ASelected}}
-    {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap}}
+    {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap}} {{!-- Figure out whether editing model actually does anything --}}
     <button {{action "cont"}}>Continue</button>
   {{else if BSelected}}
     {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap}}
@@ -34,6 +34,5 @@
   {{else if FSelected}}  
   {{/if}}
 {{/unless}}
-
-<button {{action "submit"}}>Test!</button>
-
+<br><br>
+{{model.pick1}}

@@ -43,7 +43,6 @@ export default Ember.Component.extend({
 	  if (winners[i] !== w && winners[i] !== 'TBD') {
 	    for (var ii = i + 1; ii < 15; ii++) {
 	      if (winners[ii] === winners[i]) {
-		console.log('what' + ii);
 		Ember.set(winners, '' + ii, 'TBD', true);
 	      }
 	    }
@@ -52,12 +51,9 @@ export default Ember.Component.extend({
 	} else {
 	  Ember.set(winners, '' + i, 'TBD', true);
 	}
+	// How to change it in the model? Should I do this here or during validation?
       }
       this.set('winners', winners);
     },
-    done() {
-      console.log('done');
-    }
   } 
-
 });
