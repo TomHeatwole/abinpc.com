@@ -4,29 +4,66 @@
 {{#unless allowPicks}}
   We are not currently allowing picks for this season.
 {{else}}
-  {{#if noneSelected}}
-  Access Key: {{input value=model.accessKey}}<br>
-  Name: {{input value=model.name}}<br><br>
-    {{#unless ACompleted}}
-      <button {{action "selectA"}}>{{AName}} picks</button>
-    {{/unless}}
-    {{#unless BCompleted}}
-      <button {{action "selectB"}}>{{BName}} picks</button>
-    {{/unless}}
-    {{#unless CCompleted}}
-      <button {{action "selectC"}}>{{CName}} picks</button>
-    {{/unless}}
-    {{#unless DCompleted}}
-      <button {{action "selectD"}}>{{DName}} picks</button>
-    {{/unless}}
-  {{else if ASelected}}
-    {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap action="cont"}}
-  {{else if BSelected}}
-    {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap action="cont"}}
-  {{else if CSelected}}
-    {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap action="cont"}}
-  {{else if DSelected}}
-    {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap action="cont"}}
-  {{else if FSelected}}  
-  {{/if}}
+  {{#unless validKey}}
+    Name: {{input value=model.name}}<br>
+    Access Key: {{input value=model.accessKey}}<br><br>
+    <button {{action "enterKey"}}>Make Picks</button>
+    {{#if nameError}}
+      <p style="color: RED">Please enter a valid name.</p>
+    {{else if keyError}}
+      <p style="color: RED">The access key entered is invalid.</p>
+    {{/if}}
+  {{else}}
+    {{#if noneSelected}}
+      {{#unless ACompleted}}
+        <br><br><button {{action "selectA"}}>{{AName}} picks</button>
+      {{/unless}}
+      {{#unless BCompleted}}
+        <br><br><button {{action "selectB"}}>{{BName}} picks</button>
+      {{/unless}}
+      {{#unless CCompleted}}
+        <br><br><button {{action "selectC"}}>{{CName}} picks</button>
+      {{/unless}}
+      {{#unless DCompleted}}
+        <br><br><button {{action "selectD"}}>{{DName}} picks</button>
+      {{/unless}}
+    {{else if ASelected}}
+      {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap action="cont"}}
+    {{else if BSelected}}
+      {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap action="cont"}}
+    {{else if CSelected}}
+      {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap action="cont"}}
+    {{else if DSelected}}
+      {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap action="cont"}}
+    {{else if FSelected}}  
+      <div class="row">
+        <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+          <select id = "p1">
+            <option>--Select Team--</option>
+            <option>Name 1</option>
+            <option>Name 2</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+          <select id = "p9">
+            <option>--Select Team--</option>
+            <option>name3</option>
+            <option>name4</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+          <select id = "p2">
+            <option>--Select Team--</option>
+            <option>{{winner 1}}</option>
+            <option>{{winner 2}}</option>
+          </select>
+        </div>
+      </div>      
+    {{/if}}
+  {{/unless}}
 {{/unless}}

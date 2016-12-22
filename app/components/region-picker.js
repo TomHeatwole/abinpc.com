@@ -66,7 +66,8 @@ export default Ember.Component.extend({
       var games = this.get('games');
       for (var i = 1; i < 16; i++) {
 	var w = this.get('model').get('pick' + games[i]);
-	if (w === 'TBD' || w === '--Select Team--') {
+	var w2 = document.getElementById('p' + i).value;
+	if (w === 'TBD' || w === '--Select Team--' || w2 === 'TBD' || w2 === '--Select Team--') {
 	  this.set('failure1', true);
 	}
         if (i > 8) {
@@ -74,11 +75,15 @@ export default Ember.Component.extend({
 	  if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
 		this.get('model').get('pick' + games[2*i - 17]) !== w) {
 	    this.set('failure2', true);
-	  } 
+	  }
+	  if (document.getElementById('p' + (2 * i - 16)).value !== w2 &&
+		document.getElementById('p' + (2 * i - 17)).value !== w2) {
+	    this.set('failure2', true);
+	  }
 	}
       }
       if (this.get('failure1') === false && this.get('failure2') === false) {
-	this.sendAction(); // TODO: Parameter for sendaction
+	this.sendAction();     
       }
     }
   } 

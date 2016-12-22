@@ -5,10 +5,15 @@ export default Ember.Controller.extend({
   allowPicks: false,
 
   teamNameMap: '', // Will store the names of all of the teams their code
+  accessKeys: '', // Will store the list of valid access keys for the current season
   AName: '',
   BName: '',
   CName: '',
   DName: '',
+
+  validKey: false,
+  keyError: false,
+  nameError: false,
 
   ASelected: false,
   BSelected: false,
@@ -22,6 +27,25 @@ export default Ember.Controller.extend({
   noneSelected: true,
   
   actions: {
+    enterKey() {
+      this.set('keyError', true);
+      this.set('nameError', false);
+      if (!this.get('model').get('name') || this.get('model').get('name').length < 2 
+	  || this.get('model').get('name').length > 35) {
+	this.set('nameError', true);      
+      }
+      if (this.get('model').get('accessKey')) {
+	for (var i = 0; this.get('accessKeys')[i]; i++) {
+	  if (this.get('accessKeys')[i] === this.get('model').get('accessKey')) {
+	    this.set('keyError', false);
+	  }
+	}
+      }
+      if (!this.get('nameError') && !this.get('keyError')) {
+	this.set('validKey', true);
+      }
+      
+    },
     selectA() {
       this.set('ASelected', true);
       this.set('noneSelected', false);
@@ -38,8 +62,16 @@ export default Ember.Controller.extend({
       this.set('DSelected', true);
       this.set('noneSelected', false);
     },
-    cont() { // continue
-      // Implement validations based on selected region, also update completed region
+    cont() {
+      if (this.get('ASelected')) {
+	this.set('ACompleted', true);
+      } else if (this.get('BSelected')) {
+	this.set('BCompleted', true);
+      } else if (this.get('CSelected')) {
+	this.set('CCompleted', true);
+      } else if (this.get('DSelected')) {
+	this.set('DCompleted', true);
+      }
       this.set('ASelected', false);
       this.set('BSelected', false);
       this.set('CSelected', false);
@@ -54,5 +86,4 @@ export default Ember.Controller.extend({
       this.get('model').save();
     }
   }
-  // TOOD: Implement validations manually since every Ember valdiations library is pretty awful.
 });

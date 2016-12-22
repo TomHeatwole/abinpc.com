@@ -1,0 +1,14 @@
+To do:
+
+
+
+- Do name and access-key separately. Validate those before allowing player to do region picks.
+- Fianl 4 picker
+
+
+- View picks
+- Scores
+- Records
+- Rules
+- Goodies
+- Styles

@@ -50,6 +50,16 @@ export default Ember.Route.extend({
 	  }
 	});
       });
+      
+      var keySet = {};
+      var count = 0;
+      self.store.findAll('key').then(function(keys) {
+	keys.forEach(function(key) {
+	  keySet[count] = (key.get('accessKey'));
+	  count++;
+	});
+      });
+      controller.set('accessKeys', keySet);
 
       self.store.findAll('regionset').then(function(sets) {
 	sets.forEach(function(set) {
