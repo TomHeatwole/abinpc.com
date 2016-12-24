@@ -4,6 +4,7 @@
 {{#unless allowPicks}}
   We are not currently allowing picks for this season.
 {{else}}
+  {{#unless done}}
   {{#unless validKey}}
     Name: {{input value=model.name}}<br>
     Access Key: {{input value=model.accessKey}}<br><br>
@@ -66,8 +67,14 @@
         </div>
       </div>      
       <br><br>
+      <br> WARNING: Submitting your picks cannot be undone! <br>
       <button {{action "submit"}}>Submit</button>
-      <br> TODO: Warning message.
+      {{#if failure}}
+	<p style="color: RED">Make sure that you enter every pick</p>
+      {{/if}}
     {{/if}}
+  {{/unless}}
+  {{else}}
+    Your picks have been submited! Good luck.
   {{/unless}}
 {{/unless}}

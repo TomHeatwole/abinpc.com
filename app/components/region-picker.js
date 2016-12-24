@@ -36,7 +36,7 @@ export default Ember.Component.extend({
 	games[i] = (this.get('regionAdd')/2) + 24 + i;
       } else if (i < 15) {
 	games[i] = (this.get('regionAdd')/4) + 36 + i;
-      } else if (i == 15) {
+      } else if (i === 15) {
 	games[i] = (this.get('regionAdd')/8) + 42 + i;
       }
     }
