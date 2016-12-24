@@ -4,7 +4,8 @@ export default Ember.Controller.extend({
    
   allowPicks: false,
 
-  teamNameMap: '', // Will store the names of all of the teams their code
+  teamNameMap: '', // Will store the names of all of the teams by their code
+  teamCodeMap: '', // Will store the codes of all of the teams by their name
   accessKeys: '', // Will store the list of valid access keys for the current season
   AName: '',
   BName: '',
@@ -25,6 +26,13 @@ export default Ember.Controller.extend({
   DCompleted: false,
   FSelected: false, // F for final four
   noneSelected: true,
+
+  FA: '',
+  FB: '',
+  FC: '',
+  FD: '',
+  FW1: 'TBD',
+  FW2: 'TBD',
   
   actions: {
     enterKey() {
@@ -77,10 +85,17 @@ export default Ember.Controller.extend({
       this.set('CSelected', false);
       this.set('DSelected', false);
       if (this.get('ACompleted') && this.get('BCompleted') && this.get('CCompleted') && this.get('DCompleted')) {
+	this.set('FA', this.get('teamNameMap')[this.get('model').get('pick57')]);
+	this.set('FB', this.get('teamNameMap')[this.get('model').get('pick58')]);
+	this.set('FC', this.get('teamNameMap')[this.get('model').get('pick59')]);
+	this.set('FD', this.get('teamNameMap')[this.get('model').get('pick60')]);
 	this.set('FSelected', true);
       } else {
         this.set('noneSelected', true);
       }
+    },
+    pick() {
+      //TODO
     },
     submit() {
       this.get('model').save();

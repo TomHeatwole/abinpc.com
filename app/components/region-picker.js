@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-// The following parameters should be passed in: region, regionName, model, teamNameMap
+// The following parameters should be passed in: region, regionName, model, teamNameMap, teamCodeMap
 
 export default Ember.Component.extend({
     
@@ -20,17 +20,25 @@ export default Ember.Component.extend({
     var winners = {};
     var games = {};
     if (this.get('region') === 'B') {
-      this.set('regionAdd', 16); 
+      this.set('regionAdd', 8); 
     } else if (this.get('region') === 'C') {
-      this.set('regionAdd', 32);
-    } else if (this.get('regoin') === 'D') {
-      this.set('regionAdd', 48);
+      this.set('regionAdd', 16);
+    } else if (this.get('region') === 'D') {
+      this.set('regionAdd', 24);
     }
     for (var i = 1; i < 17; i++) { 
       teams[i] = this.get('region') + i; // stores teams by team code
       names[i] = this.get('teamNameMap')[teams[i]]; //stores teams by name
       winners[i] = 'TBD'; // will store each game winner in order
-      games[i] = this.get('regionAdd') + i; // stores gameNumbers
+      if (i < 9) {
+      	games[i] = this.get('regionAdd') + i; // stores gameNumbers
+      } else if (i < 13) {
+	games[i] = (this.get('regionAdd')/2) + 24 + i;
+      } else if (i < 15) {
+	games[i] = (this.get('regionAdd')/4) + 36 + i;
+      } else if (i == 15) {
+	games[i] = (this.get('regionAdd')/8) + 42 + i;
+      }
     }
     this.set('teams', teams);
     this.set('names', names);
@@ -56,7 +64,7 @@ export default Ember.Component.extend({
 	  Ember.set(winners, '' + i, 'TBD', true);
 	}
 	// This line may need to get moved into the "continue" response
-	this.get('model').set('pick' + this.get('games')[i], w);
+	this.get('model').set('pick' + this.get('games')[i], this.get('teamCodeMap')[w]);
       }
       this.set('winners', winners);
     },

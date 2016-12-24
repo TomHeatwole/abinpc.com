@@ -28,42 +28,46 @@
         <br><br><button {{action "selectD"}}>{{DName}} picks</button>
       {{/unless}}
     {{else if ASelected}}
-      {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap action="cont"}}
+      {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
     {{else if BSelected}}
-      {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap action="cont"}}
+      {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
     {{else if CSelected}}
-      {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap action="cont"}}
+      {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
     {{else if DSelected}}
-      {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap action="cont"}}
+      {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
     {{else if FSelected}}  
+      <br><br>
       <div class="row">
         <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
-          <select id = "p1">
+          <select id = "F1">
             <option>--Select Team--</option>
-            <option>Name 1</option>
-            <option>Name 2</option>
+            <option>{{FA}}</option>
+            <option>{{FB}}</option>
           </select>
         </div>
       </div>
       <div class="row">
         <div class="col-md-3"></div>
         <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
-          <select id = "p9">
+          <select id = "F3">
             <option>--Select Team--</option>
-            <option>name3</option>
-            <option>name4</option>
+            <option>{{FW1}}</option>
+            <option>{{FW2}}</option>
           </select>
         </div>
       </div>
       <div class="row">
         <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
-          <select id = "p2">
+          <select id = "F2">
             <option>--Select Team--</option>
-            <option>{{winner 1}}</option>
-            <option>{{winner 2}}</option>
+            <option>{{FC}}</option>
+            <option>{{FD}}</option>
           </select>
         </div>
       </div>      
+      <br><br>
+      <button {{action "submit"}}>Submit</button>
+      <br> TODO: Warning message.
     {{/if}}
   {{/unless}}
 {{/unless}}
