@@ -2,5 +2,18 @@
 
 {{nav-bar}}
 
+{{#if ASelected}}
+{{else if BSelected}}
+{{else if CSelected}}
+{{else if DSelected}}
+{{else if FSelected}}
+{{else}}
+  <br><br>
+  <button {{action "selectA"}}>View {{A}} picks</button>
+  <button {{action "selectB"}}>View {{B}} picks</button>
+  <button {{action "selectC"}}>View {{C}} picks</button>
+  <button {{action "selectD"}}>View {{D}} picks</button>
+  <button {{action "selectF"}}>View {{F}} picks</button>
+  <br><br>
+{{/if}}
 
-This is where people will view picks.
