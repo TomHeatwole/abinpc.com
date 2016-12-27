@@ -12,7 +12,28 @@
   {{else if DSelected}}
     {{region-picks region="D" regionName=D teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
   {{else if FSelected}}
-    TODO: Final 4 picks.
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
+	<h1>Final 4 Picks</h1>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row tableContainer">
+      <div class="col-sm-12" align="center">
+	<table border="4" cellpadding="3" cellspacing="3">
+	  <tr class="trHead"> 
+	    <td>Player</td>
+	    <td>{{displayNames.61.team1}} vs. {{displayNames.61.team2}}</td>
+	    <td>{{displayNames.62.team1}} vs. {{displayNames.62.team2}}</td>
+	    <td>{{displayNames.63.team1}} vs. {{displayNames.63.team2}}</td>
+	  </tr>
+	  {{#each FPicks as |playerPicks|}}
+	    {{view-picks-row player=playerPicks correct=FCorrect incorrect=FIncorrect round=4}}
+	  {{/each}}
+	</table>
+      </div>
+    </div>
   {{else}}
     <br><br>
     <button {{action "selectA"}}>View {{A}} picks</button>

@@ -5,9 +5,10 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'tr',
-  r1: false, //Determine which round these picks are for
+  r1: false, // Determine which round these picks are for
   r2: false,
   r3: false,
+  F: false, // Final 4
   pCorrect: [],
   pIncorect: [],
   
@@ -22,6 +23,9 @@ export default Ember.Component.extend({
 	break;
       case 3:
 	this.set('r3', true);
+	break;
+      case 4: // 4 is for Final 4
+	this.set('F', true);
 	break;
     }
     var pCorrect = [];

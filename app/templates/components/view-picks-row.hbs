@@ -108,4 +108,26 @@
   {{else}}
     <td class="tdNormal">{{player.p15}}</td>
   {{/if}}
+{{else if F}}
+  {{#if pCorrect.g61}}
+    <td class = "tdCorrect">{{player.p61}}</td>
+  {{else if pIncorrect.g61}}
+    <td class = "tdIncorrect">{{player.p61}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p61}}</td>
+  {{/if}}
+  {{#if pCorrect.g62}}
+    <td class = "tdCorrect">{{player.p62}}</td>
+  {{else if pIncorrect.g62}}
+    <td class = "tdIncorrect">{{player.p62}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p62}}</td>
+  {{/if}}
+  {{#if pCorrect.g63}}
+    <td class = "tdCorrect">{{player.p63}}</td>
+  {{else if pIncorrect.g63}}
+    <td class = "tdIncorrect">{{player.p63}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p63}}</td>
+  {{/if}}
 {{/if}}
