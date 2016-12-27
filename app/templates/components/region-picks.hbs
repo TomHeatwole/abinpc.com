@@ -22,17 +22,9 @@
 	<td>{{displayNames.7.team1}} vs. {{displayNames.7.team2}}</td>
 	<td>{{displayNames.8.team1}} vs. {{displayNames.8.team2}}</td>
       </tr>
-      <tr>
-	{{#each picks as |playerPicks|}}
-	  <td class="tdName">{{playerPicks.name}}</td>
-	  {{#if complete.g1}}
-	    <td>{{playerPicks.p1}} complete</td>
-	  {{else}}
-	    <td class="tdNormal">{{playerPicks.p1}} not complete</td>
-	    {{complete.g1}}
-	  {{/if}}
-	{{/each}}
-      </tr>
+      {{#each picks as |playerPicks|}}
+	{{view-picks-row player=playerPicks incorrect=incorrect correct=correct round=1}}
+      {{/each}}
     </table>
   </div>
 </div>

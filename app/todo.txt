@@ -1,16 +1,11 @@
 To do:
 
 - View picks:
-  new season
-  make a few picksets
-  enter a few games from round 1
-  create styles for correct/incorrect/incomplete games
-  complete region-picks component controller and template
-
+  - Rounds 2-4
+  - View final 4 picks
 
 
 - Scores
-- Records
 - Rules
 - Goodies
 - Styles

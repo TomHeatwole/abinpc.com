@@ -21,6 +21,16 @@ table {
   color: darkslateblue;
   background-color: #E6CCB4; 
 }
+.tdCorrect {
+  font-weight: bold;
+  color: darkslateblue;
+  background-color: white;
+}
+.tdIncorrect {
+  text-decoration: line-through;
+  color: darkred;
+  background-color: #E6CCB4;
+}
 
 td {
   width: 170px;

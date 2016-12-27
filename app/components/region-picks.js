@@ -6,7 +6,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   picks: [],
   correct: [],
-  complete: [],
+  incorrect: [],
   displayNames: [],
 
   init: function() {
@@ -36,27 +36,52 @@ export default Ember.Component.extend({
       regionGames.push(this.get('games')[gameNumbers[i]]);
     }
     var displayNames = [];
-    var complete = [];
     for (i = 1; i < 16; i++) {
       var pair = [];
-      pair['team1'] =  this.get('teamNameMap')[regionGames[i].get('team1')];
-      pair['team2'] =  this.get('teamNameMap')[regionGames[i].get('team2')]; // displayNames[1] = [Virginia, Hampton] 
-      complete['g' + i] = (regionGames[i].get('winner') !== 'TBD');
+      pair['team1'] = this.get('teamNameMap')[regionGames[i].get('team1')];
+      pair['team2'] = this.get('teamNameMap')[regionGames[i].get('team2')]; // displayNames[1] = [Virginia, Hampton] 
       displayNames[i] = pair;
     }
     this.set('displayNames', displayNames);
-    this.set('complete', complete);
-    var picks = [];
-    for (i = 0; i < this.get('players').length; i++) {
-      var row = []; 
-      row['name'] = this.get('players')[i].get('name');
-      for (var ii = 1; ii < 9; ii++) {
-	row['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + gameNumbers[ii]))];
+    var eliminated = [];
+    for (i = 1; i < 64; i++) {
+      if (this.get('games')[i].get('winner') !== 'TBD') {
+	if (this.get('games')[i].get('winner') === this.get('games')[i].get('team1')) {
+	  eliminated.push(this.get('games')[i].get('team2'));
+	} else {
+	  eliminated.push(this.get('games')[i].get('team1'));
+	}
       }
-      picks.push(row);
+    }
+    var picks = [];
+    var correct = [];
+    var incorrect = [];
+    for (i = 0; i < this.get('players').length; i++) {
+      var row1 = []; // pciks
+      var row2 = []; // correct
+      var row3 = []; // incorrect
+      row1['name'] = this.get('players')[i].get('name');
+      row1['accessKey'] = this.get('players')[i].get('accessKey');
+      for (var ii = 1; ii < 15; ii++) {
+	row1['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + gameNumbers[ii]))];
+	if (regionGames[ii].get('winner') === 'TBD') {
+	  row2['g' + ii] = false;
+	  row1['g' + ii] = (eliminated.includes(this.get('players')[i].get('pick' + gameNumbers[ii]))); 
+	} else if (row1['p' + ii] === this.get('teamNameMap')[regionGames[ii].get('winner')]) {
+	  row2['g' + ii] = true;
+	  row3['g' + ii] = false;
+	} else {
+	  row2['g' + ii] = false;
+	  row3['g' + ii] = true;
+	}
+      }
+      picks.push(row1);
+      correct[this.get('players')[i].get('accessKey')] = row2;
+      incorrect[this.get('players')[i].get('accessKey')] = row3;
     }
     this.set('picks', picks);
-    //TODO: correct [][] takes in player's accessKey, then takes in regionGameNumber; returns whether pick is correct
+    this.set('correct', correct);
+    this.set('incorrect', incorrect);
   },
   actions: {
     back() {
