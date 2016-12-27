@@ -1,0 +1,39 @@
+{{yield}}
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
+    <h1>{{regionName}} Picks</h1>
+  </div>
+</div>
+<br>
+<br>
+<div class="row">
+  <div class="col-sm-12 tableContainer" align="center">
+    <table border="4" cellpadding="3" cellspacing="3">
+      <tr class="trHead"> 
+	<td>Player</td>
+	<td>{{displayNames.1.team1}} vs. {{displayNames.1.team2}}</td>
+	<td>{{displayNames.2.team1}} vs. {{displayNames.2.team2}}</td>
+	<td>{{displayNames.3.team1}} vs. {{displayNames.3.team2}}</td>
+	<td>{{displayNames.4.team1}} vs. {{displayNames.4.team2}}</td>
+	<td>{{displayNames.5.team1}} vs. {{displayNames.5.team2}}</td>
+	<td>{{displayNames.6.team1}} vs. {{displayNames.6.team2}}</td>
+	<td>{{displayNames.7.team1}} vs. {{displayNames.7.team2}}</td>
+	<td>{{displayNames.8.team1}} vs. {{displayNames.8.team2}}</td>
+      </tr>
+      <tr>
+	{{#each picks as |playerPicks|}}
+	  <td class="tdName">{{playerPicks.name}}</td>
+	  {{#if complete.g1}}
+	    <td>{{playerPicks.p1}} complete</td>
+	  {{else}}
+	    <td class="tdNormal">{{playerPicks.p1}} not complete</td>
+	    {{complete.g1}}
+	  {{/if}}
+	{{/each}}
+      </tr>
+    </table>
+  </div>
+</div>
+<button {{action "back"}}>Back</button>

@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
     is temporary and not even a little bit secure as it is. If anybody has the URL to my database, 
     they can competely ruin my app in no time. I just felt too weird hardcoding the actual password
     in the public database. In reality storing the hash is hardly any safer, but I suppose it's good
-    practice. Once again, the current backend is temporary anyway. This is the has function.
+    practice. Once again, the current backend is temporary anyway. This is the hash function.
   */
 
   hash: function(str) {

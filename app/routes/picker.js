@@ -74,6 +74,7 @@ export default Ember.Route.extend({
 	  }
 	});
       });
+      controller.set('season', admin.get('season'));
     });
   }
 });

@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  allowPicks: true,
+  teamNameMap: {},
+  teamCodeMap: {},
+  players: [],
+  games: {},
+
   A: '',
   B: '',
   C: '', 
@@ -48,6 +54,13 @@ export default Ember.Controller.extend({
       this.set('CSelected', false);
       this.set('DSelected', false);
       this.set('FSelected', true);
+    },
+    back() {
+      this.set('ASelected', false);
+      this.set('BSelected', false);
+      this.set('CSelected', false);
+      this.set('DSelected', false);
+      this.set('FSelected', false);
     }
   }
 });

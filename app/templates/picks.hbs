@@ -2,18 +2,26 @@
 
 {{nav-bar}}
 
-{{#if ASelected}}
-{{else if BSelected}}
-{{else if CSelected}}
-{{else if DSelected}}
-{{else if FSelected}}
+{{#unless allowPicks}}
+  {{#if ASelected}}
+    {{region-picks region="A" regionName=A teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
+  {{else if BSelected}}
+    {{region-picks region="B" regionName=B teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
+  {{else if CSelected}}
+    {{region-picks region="C" regionName=C teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
+  {{else if DSelected}}
+    {{region-picks region="D" regionName=D teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
+  {{else if FSelected}}
+    TODO: Final 4 picks.
+  {{else}}
+    <br><br>
+    <button {{action "selectA"}}>View {{A}} picks</button>
+    <button {{action "selectB"}}>View {{B}} picks</button>
+    <button {{action "selectC"}}>View {{C}} picks</button>
+    <button {{action "selectD"}}>View {{D}} picks</button>
+    <button {{action "selectF"}}>View {{F}} picks</button>
+    <br><br>
+  {{/if}}
 {{else}}
-  <br><br>
-  <button {{action "selectA"}}>View {{A}} picks</button>
-  <button {{action "selectB"}}>View {{B}} picks</button>
-  <button {{action "selectC"}}>View {{C}} picks</button>
-  <button {{action "selectD"}}>View {{D}} picks</button>
-  <button {{action "selectF"}}>View {{F}} picks</button>
-  <br><br>
-{{/if}}
-
+  Picks are still being accepted. You may view picks once the games have started.
+{{/unless}}

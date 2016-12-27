@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   teamNameMap: '', // Will store the names of all of the teams by their code
   teamCodeMap: '', // Will store the codes of all of the teams by their name
   accessKeys: '', // Will store the list of valid access keys for the current season
+  season: '',
   AName: '',
   BName: '',
   CName: '',
@@ -128,6 +129,7 @@ export default Ember.Controller.extend({
 	    }
 	  });
 	});
+	this.get('model').set('season', this.get('season'));
 	this.get('model').save();
 	this.set('done', true);
       }

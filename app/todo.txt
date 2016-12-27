@@ -1,6 +1,14 @@
 To do:
 
-- View picks
+- View picks:
+  new season
+  make a few picksets
+  enter a few games from round 1
+  create styles for correct/incorrect/incomplete games
+  complete region-picks component controller and template
+
+
+
 - Scores
 - Records
 - Rules
