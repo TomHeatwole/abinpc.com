@@ -1,7 +1,6 @@
 To do:
 
 - View picks:
-  - Rounds 2-4
   - View final 4 picks
 
 

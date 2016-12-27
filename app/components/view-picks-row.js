@@ -8,7 +8,6 @@ export default Ember.Component.extend({
   r1: false, //Determine which round these picks are for
   r2: false,
   r3: false,
-  r4: false,
   pCorrect: [],
   pIncorect: [],
   
@@ -23,9 +22,6 @@ export default Ember.Component.extend({
 	break;
       case 3:
 	this.set('r3', true);
-	break;
-      case 4:
-	this.set('r4', true);
 	break;
     }
     var pCorrect = [];

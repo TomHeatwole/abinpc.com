@@ -8,8 +8,9 @@
 </div>
 <br>
 <br>
-<div class="row">
-  <div class="col-sm-12 tableContainer" align="center">
+<div class="row tableContainer">
+  <div class="col-sm-12" align="center">
+    <h2>Round 1 picks</h2><br>
     <table border="4" cellpadding="3" cellspacing="3">
       <tr class="trHead"> 
 	<td>Player</td>
@@ -26,6 +27,39 @@
 	{{view-picks-row player=playerPicks incorrect=incorrect correct=correct round=1}}
       {{/each}}
     </table>
+  </div>
+</div>
+<br>
+<br>
+<div class="row tableContainer">
+  <div class= "col-sm-7" align="center">
+    <h2>Round 2 picks</h2><br>
+    <table border="4" cellpadding="3" cellspacing="3">
+      <tr class="trHead">
+	<td>Player</td>
+	<td>{{displayNames.9.team1}} vs. {{displayNames.9.team2}}</td>
+	<td>{{displayNames.10.team1}} vs. {{displayNames.10.team2}}</td>
+	<td>{{displayNames.11.team1}} vs. {{displayNames.11.team2}}</td>
+	<td>{{displayNames.12.team1}} vs. {{displayNames.12.team2}}</td>
+      </tr>
+      {{#each picks as |playerPicks|}}
+	{{view-picks-row player=playerPicks incorrect=incorrect correct=correct round=2}}
+      {{/each}}
+    </table> 
+  </div>
+  <div class= "col-sm-5" align="center">
+    <h2>Round 3 & 4 picks</h2><br>
+    <table border="4" cellpadding="3" cellspacing="3">
+      <tr class="trHead">
+	<td>Player</td>
+	<td>{{displayNames.13.team1}} vs. {{displayNames.13.team2}}</td>
+	<td>{{displayNames.14.team1}} vs. {{displayNames.14.team2}}</td>
+	<td>{{displayNames.15.team1}} vs. {{displayNames.15.team2}}</td>
+      </tr>
+      {{#each picks as |playerPicks|}}
+	{{view-picks-row player=playerPicks incorrect=incorrect correct=correct round=3}}
+      {{/each}}
+    </table> 
   </div>
 </div>
 <button {{action "back"}}>Back</button>

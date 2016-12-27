@@ -2,6 +2,10 @@ table {
   border-color: #CC9866;
 }
 
+.tableContainer {
+  max-width: 1530;
+}
+
 .trHead {
   color: WHITE;
   background-color: #AE4E02;
