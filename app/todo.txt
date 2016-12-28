@@ -1,9 +1,5 @@
 To do:
 
-- View picks:
-  - View final 4 picks
-
-
 - Scores
 - Rules
 - Goodies

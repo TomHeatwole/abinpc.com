@@ -1,4 +1,48 @@
 {{outlet}}
 {{nav-bar}}
 
-This is wher ethe scores are gonna be.
+{{#if allowPicks}}
+  You can view scores here once games have started.
+{{else}}
+  {{#if loading}}
+    loading...
+  {{else if loadError}}
+    There was an error loading the scores. Please refresh the page.
+  {{else}}
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
+	<h1>Leaderboard</h1>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="row tableContainer">
+      <div class="col-sm-12" align="center">
+	<table border="4" cellpadding="3" cellspacing="3">
+	  <tr class="trHead"> 
+	    <td>Player</td>
+	    <td>Total</td>
+	    <td>Round 1</td>
+	    <td>Round 2</td>
+	    <td>Round 3</td>
+	    <td>Round 4</td>
+	    <td>Final 4</td>
+	    <td>Championship</td>
+	  </tr>
+	  {{#each scores as |playerScores|}}
+	    <tr>
+	      <td class="tdName">{{playerScores.name}}</td>
+	      <td class="tdBold">{{playerScores.total}}</td>
+	      <td class="tdNormal">{{playerScores.r1S}} ({{playerScores.r1C}})</td>
+	      <td class="tdNormal">{{playerScores.r2S}} ({{playerScores.r2C}})</td>
+	      <td class="tdNormal">{{playerScores.r3S}} ({{playerScores.r3C}})</td>
+	      <td class="tdNormal">{{playerScores.r4S}} ({{playerScores.r4C}})</td>
+	      <td class="tdNormal">{{playerScores.r5S}} ({{playerScores.r5C}})</td>
+	      <td class="tdNormal">{{playerScores.r6S}} ({{playerScores.r6C}})</td>
+	    </tr>
+	  {{/each}}
+	</table>
+      </div>
+    </div>
+  {{/if}}
+{{/if}}

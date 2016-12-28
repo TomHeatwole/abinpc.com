@@ -11,7 +11,7 @@ export default Ember.Route.extend({
     var map1 = {};
     var map2 = {};
     var playerSet = [];
-    var gameSet = {};
+    var gameSet = [];
     var self=this;
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre')); 
