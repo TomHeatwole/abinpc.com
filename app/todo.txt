@@ -1,6 +1,6 @@
 To do:
 
-- Scores
+- Home page
 - Rules
 - Goodies
 - Styles

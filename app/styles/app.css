@@ -1,3 +1,52 @@
+div {
+  background-color: darkgray;
+}
+
+.head {
+  height: 90px;
+  background-color: #AE4E02;
+  text-align: center;
+  text-color: darkslateblue;
+  font-family: 'Monda', sans-serif;
+  font-size: 8vmin;
+  cursor: default;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #AE4E02;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  font-size: 20px;
+  width: 180px;
+  height: 70px;
+  line-height: 45px;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  padding: 14px 16px;
+  text-decoration: none;
+  cursor: default;
+  font-family: 'Nunito', sans-serif;
+}
+
+li a:hover {
+  background-color: #E6CCB4;
+  text-color: darkslateblue;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
 table {
   border-color: #CC9866;
 }

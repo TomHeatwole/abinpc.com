@@ -1,8 +1,17 @@
 {{yield}}
+<link href="https://fonts.googleapis.com/css?family=Nunito|Monda" rel="stylesheet">
 
-<button {{action "home"}}>Home</button>
-<button {{action "picker"}}>Make Picks</button>
-<button {{action "picks"}}>View Picks</button>
-<button {{action "scores"}}>Scores</button>
-<button {{action "records"}}>Records</button>
-<button {{action "rules"}}>Rules</button>
+
+<div class="row head" {{action "home"}}>
+  ABINPC.COM
+</div>
+<div class="row">
+  <ul class="ulNav">
+    <li class = "liNav" {{action "home"}}><a style="font-size:40px"><i class="fa fa-home"></i></a></li>
+    <li class = "liNav" {{action "picker"}}><a>Make Picks</a></li>
+    <li class = "liNav" {{action "picks"}}><a>View Picks</a></li>
+    <li class = "liNav" {{action "scores"}}><a>Scores</a></li>
+    <li class = "liNav" {{action "records"}}><a>Records</a></li>
+    <li class = "liNav" {{action "rules"}}><a>Rules</a></li>
+  </ul>
+</div>
