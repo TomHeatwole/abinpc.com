@@ -1,3 +1,132 @@
 {{outlet}}
 {{nav-bar}}
-This is where users can view the rules.
+<div class="navOffset">
+</div>
+<div class = "row" style="text-align: center">
+  <div class = "col-sm-10 col-sm-offset-1 paragraph">
+    <h1> Rules</h1> 
+    <div class="row" style="height: 5vmin">
+    </div>
+    <div class = "row">
+      <div class = "col-sm-8 col-sm-offset-2">
+	<p>
+	  Abinpc's scoring system works a little differently (better) than ESPN's scoring system. 
+	  The traditional scoring system used by ESPN and other services is simple: Games in each
+	  round are worth twice as many points as games in the previous round. If you're good at
+	  math, then you already know that with this scoring system, choosing the correct national
+	  champion is worth 32 times as many points as picking a first round game correctly. 
+	  Obviously getting the champion right is more important, but is it 32 times more important? 
+	  Probably not. Doubling the points every round turns your march madness pool into a contest
+	  of who can choose the correct national champion, and lets each previous round serve as a
+	  tie-breaker. This takes the fun out of picking the early round games. ESPN's scoring system 
+	  also fails to award points for correctly picking upsets. This makes it really hard to come 
+	  up with a better strategy than picking all lower seeds (or using your favorite ratings website 
+	  to make every decision). Lastly, and most importantly, ESPN and other websites don't have goodies!
+	  Here is how Abinpc is scored differently:
+	</p>
+	<div class = "row">
+	  <div class = "col-sm-10 col-sm-offset-1">
+	    <p style="text-indent: 0px">
+	      <b>1. Fibbonacci Scoring:</b>
+	      <p>
+		Instead of doubling points each round, Abinpc increases each round based on the Fibbonacci
+		sequence. Games in the first roud are worh 10 points, games in the second round are worth 20
+		points, third round is worth 30, fourth round is worth 50, final four games are worth 80, and
+		choosing the correct national champion is worth 130.
+	      </p>
+	    </p>
+	    <p style="text-indent: 0px">
+	      <b>2. Upset Points:</b>
+	      <p>
+		Upset points are awarded for every correct pick that has a higher seed advancing. The number of
+		upset points is determined by (seed differential) * (upset multiplier). The seed differential is
+		simply the seed of the winning team minus the seed that would win if only lower seeds advanced. 
+		Note that if a 13 seed beats a 12 seed in round 2, the seed differential is 9, not 1. Since a 4
+		seed would advance if all lower seeds advanced, choosing a 13 seed to go to the sweet 16 is still
+		worth the full upest value. The upset multipliers for each round are as follows:
+	      </p>
+	    </p>
+	    <div class = "row" style="height: 2vmin">
+	    </div>
+	    <div class = "row">
+	      <center>
+		<table border="4" cellpadding="3" cellspacing="3">
+		  <tr class = "trHead">
+		    <td>Round #</td>
+		    <td>Points</td>
+		    <td>Upset multiplier</td>
+		  </tr>
+		  <tr>
+		    <td class = "tdName">1</td>
+		    <td class = "tdBold">10</td>
+		    <td class = "tdBold">1</td>
+		  </tr>
+		  <tr>
+		    <td class = "tdName">2</td>
+		    <td class = "tdBold">20</td>
+		    <td class = "tdBold">3</td>
+		  </tr>
+		  <tr>
+		    <td class = "tdName">3</td>
+		    <td class = "tdBold">30</td>
+		    <td class = "tdBold">5</td>
+		  </tr>
+		  <tr>
+		    <td class = "tdName">4</td>
+		    <td class = "tdBold">50</td>
+		    <td class = "tdBold">10</td>
+		  </tr>
+		  <tr>
+		    <td class = "tdName">Final 4</td>
+		    <td class = "tdBold">80</td>
+		    <td class = "tdBold">15</td>
+		  </tr>
+		  <tr>
+		    <td class = "tdName">Finals</td>
+		    <td class = "tdBold">130</td>
+		    <td class = "tdBold">20</td>
+		  </tr>
+		</table>
+	      </center>
+	    </div>
+	    <div class = "row" style= "height:3vmin">
+	    </div>
+	    <p style="text-indent: 0px">
+	      <b>3. Goodies:</b>
+	      <p>
+		Goodies are what makes Abinpc unique. There are 10 "goodies" worth varying amounts of points.
+		The first five  goodies are determined by how you filled out your bracket. The remaining five are
+		submitting along with your bracket in the final screen of the 'Make Picks' page.
+		<br>(1) Lowest seeded team correctly picked to win in the first round [30 points]
+		<br>(2) Lowest seeded team correctly picked to win in the sweet 16 [36 points]
+		<br>(3) Lowest seeded team correctly picked to win in the third round [42 points]
+		<br>(4) Best region bracket -- Most correct picks in a single region [30 points]	 
+		<br>(5) 16 seed bonus -- [250 points] for each correctly picked game won by a 16 seed. 
+		<br>(6) NCAA women's champion [60 points]
+		<br>(7) NIT champion [60 points]
+		<br>(8) Biggest first round blowout (margin of victory) [18 points]
+		<br>(9) First conference out -- From a list of Big 10, Big 12, SEC, PAC-10, and ACC, you will
+		select which conference will be the first to be completely eliminated. You are awarded 
+		[4 * # of teams from that conference] points.
+		<br> (10) Dark horse national champion - Your second chance to pick the national champion. Your 
+		dark horse pick is completely safe if the team has a seed number of 3 or more. However, if your
+		dark horse is seeded #1 or #2 in its region and another Abinpc contestant has picked them in his
+		or her official bracket, you lose your dark horse pick immediately. Everyone who has the correct
+		dark horse pick will <b>split up</b> the points that team would have earned in a normal bracket 
+		[130 + upset points].
+		<br>
+		<br>
+		<b>Stroke rule:</b> If nobody correctly picks a goodie (#1-4,6-8), contestants who picked the
+		next best choice wll <b>split up</b> for that goodie. For example, if nobody picks the NCAA women's
+		champ, we wil reward the entrant who picked the team that lasted the longest. If multiple contestants
+		had the same team or picked different teams who tied for the next longest run, they will have
+		to split the points. If they each had correctly picked the national champion, they would each
+		receive the full 60 points. This does not apply for dark horse or first conference out.
+	      </p>
+	    </p>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
