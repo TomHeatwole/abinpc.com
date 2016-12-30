@@ -129,9 +129,15 @@
       {{else if DSelected}}
 	{{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
       {{else if FSelected}}  
-	<br><br>
+	<div class = "row">
+	<div class= "col-sm-4 col-sm-offset-4 paragraph2" style="color: black; font-size: 18px">
+	<div class= "row">
+	  <h1>Final Four</h1>
+	</div>
+	<div class="row" style="height:20px">
+	</div>
 	<div class="row">
-          <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+          <div class = "col-md-6" style="text-align: center" {{action "pick"}}>
             <select id = "F1">
               <option>--Select Team--</option>
               <option>{{FA}}</option>
@@ -140,8 +146,7 @@
           </div>
 	</div>
 	<div class="row">
-          <div class="col-md-3"></div>
-          <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+          <div class = "col-md-6 col-md-offset-6" style="text-align: center" {{action "pick"}}>
             <select id = "F3">
               <option>--Select Team--</option>
               <option>{{FW1}}</option>
@@ -150,7 +155,7 @@
           </div>
 	</div>
 	<div class="row">
-          <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+          <div class = "col-md-6" style="text-align: center" {{action "pick"}}>
             <select id = "F2">
               <option>--Select Team--</option>
               <option>{{FC}}</option>
@@ -158,11 +163,30 @@
             </select>
           </div>
         </div>      
-	<br><br>
-	<button {{action "cont2"}}>Continue</button>
-	{{#if failure}}
-	  <p style="color: RED">Make sure that you enter every pick</p>
-	{{/if}}
+	<div class = "row" style="height: 15px">
+	</div>
+	<div class = "row">
+	  <center>
+	    <button class="btn-success" style="width: 70%; height: 40px"{{action "cont2"}}>
+	      Continue
+	    </button>
+	  </center>
+	  {{#if failure}}
+	    <div class = "row" style = "height: 10px">
+	    </div>
+	    <div class = "row">
+	      <center>
+		<div class = "alert alert-danger" style="width: 67%">
+		  Make sure that you enter every pick.
+		</div>
+	      </center>
+	    </div>
+	  {{/if}}
+	<div class="row" style="height:14px">
+	</div>
+	</div>
+	</div>
+	</div>
       {{/if}}
     {{/unless}}
   {{else unless done}}
