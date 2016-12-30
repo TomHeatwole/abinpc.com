@@ -17,7 +17,8 @@ export default Ember.Controller.extend({
   BSelected: false,
   CSelected: false,
   DSelected: false,
-  FSelected: false,
+  FSelected: false, // F for final 4
+  GSelected: false, // G for goodies
 
   displayNames: [],
   FPicks: [],
@@ -31,6 +32,7 @@ export default Ember.Controller.extend({
       this.set('CSelected', false);
       this.set('DSelected', false);
       this.set('FSelected', false);
+      this.set('GSelected', false);
     },
     selectB() {
       this.set('ASelected', false);
@@ -38,6 +40,7 @@ export default Ember.Controller.extend({
       this.set('CSelected', false);
       this.set('DSelected', false);
       this.set('FSelected', false);
+      this.set('GSelected', false);
     },
     selectC() {
       this.set('ASelected', false);
@@ -45,6 +48,7 @@ export default Ember.Controller.extend({
       this.set('CSelected', true);
       this.set('DSelected', false);
       this.set('FSelected', false);
+      this.set('GSelected', false);
     },
     selectD() {
       this.set('ASelected', false);
@@ -52,6 +56,7 @@ export default Ember.Controller.extend({
       this.set('CSelected', false);
       this.set('DSelected', true);
       this.set('FSelected', false);
+      this.set('GSelected', false);
     },
     selectF() {
       this.set('ASelected', false);
@@ -59,6 +64,7 @@ export default Ember.Controller.extend({
       this.set('CSelected', false);
       this.set('DSelected', false);
       this.set('FSelected', true);
+      this.set('GSelected', false);
 
       var eliminated = [];
       for (var i = 1; i < 64; i++) {
@@ -108,12 +114,21 @@ export default Ember.Controller.extend({
       this.set('FCorrect', FCorrect);
       this.set('FIncorrect', FIncorrect);
     },
+    selectG() {
+      this.set('ASelected', false);
+      this.set('BSelected', false);
+      this.set('CSelected', false);
+      this.set('DSelected', false);
+      this.set('FSelected', false);
+      this.set('GSelected', true);
+    },
     back() {
       this.set('ASelected', false);
       this.set('BSelected', false);
       this.set('CSelected', false);
       this.set('DSelected', false);
       this.set('FSelected', false);
+      this.set('GSelected', false);
     }
   }
 });

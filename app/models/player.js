@@ -4,7 +4,6 @@ export default DS.Model.extend({
   season: DS.attr('string'), // Determines which season of abinpc this data belongs to
   name: DS.attr('string'),
   accessKey: DS.attr('string'),
-  score: DS.attr('number'),
   
   // picks:
   pick1: DS.attr('string'),
@@ -69,5 +68,31 @@ export default DS.Model.extend({
   pick60: DS.attr('string'),
   pick61: DS.attr('string'),
   pick62: DS.attr('string'),
-  pick63: DS.attr('string')
+  pick63: DS.attr('string'),
+
+  // Goodies
+  // 1-9 as listed in the 'rules' page without Goodie #5.
+  pickG1: DS.attr('string'), 
+  pickG2: DS.attr('string'), 
+  pickG3: DS.attr('string'), 
+  pickG4: DS.attr('string'), 
+  pickG5: DS.attr('string'), 
+  pickG6: DS.attr('string'), 
+  pickG7: DS.attr('string'), 
+  pickG8: DS.attr('string'), 
+  pickG9: DS.attr('string'), 
+
+  //Status of Goodie Picks
+  sG1: DS.attr('string'),
+  sG2: DS.attr('string'),
+  sG3: DS.attr('string'),
+  sG4: DS.attr('string'),
+  sG5: DS.attr('string'),
+  sG6: DS.attr('string'),
+  sG7: DS.attr('string'),
+  sG8: DS.attr('string'),
+  sG9: DS.attr('string'),
+
+  // Total score from goodies
+  goodieScore: ('number')
 });

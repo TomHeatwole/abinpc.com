@@ -36,6 +36,8 @@ export default Ember.Controller.extend({
   FW2: 'TBD',
 
   failure: false,
+  failure2: false,
+  lastScreen: false,
   done: false,
   
   actions: {
@@ -98,6 +100,21 @@ export default Ember.Controller.extend({
         this.set('noneSelected', true);
       }
     },
+    cont2() {
+      var self = this;
+      this.set('failure', false);
+      for (var i = 1; i < 4; i++) {
+	if (this.get('model').get('pick6' + i) === 'TBD') {
+	  this.set('failure', true);
+	}
+        if (document.getElementById('F' + i).value === 'TBD' || document.getElementById('F' + i).value === '--Select Team--') {
+	  this.set('failure', true);
+	}
+      }
+      if (!this.get('failure')) {
+        this.set('lastScreen', true);
+      }
+    },
     pick() {
       var winner1 = document.getElementById('F1').value;
       var winner2 = document.getElementById('F2').value;
@@ -111,24 +128,35 @@ export default Ember.Controller.extend({
     },
     submit() {
       var self = this;
-      this.set('failure', false);
-      for (var i = 1; i < 4; i++) {
-	if (this.get('model').get('pick6' + i) === 'TBD') {
-	  this.set('failure', true);
-	}
-        if (document.getElementById('F' + i).value === 'TBD' || document.getElementById('F' + i).value === '--Select Team--') {
-	  this.set('failure', true);
+      this.set('failure2', false);
+      if (document.getElementById('G8').value === '--Select Conference--') {
+	this.set('failure2', true);
+      } else {
+	this.get('model').set('pickG8', document.getElementById('G8').value);
+	for (var i = 5; i < 10; i++) {
+	  if (!this.get('model').get('pickG' + i)) {
+	    console.log(i);
+	    this.set('failure2', true);
+	  }
 	}
       }
-      if (!this.get('failure')) {
+      if (!this.get('failure2')) {
 	self.store.findAll('key').then(function(keys) {
   	  keys.forEach(function(key) {
 	    if (key.get('accessKey') === self.get('model').get('accessKey')) {
 	      key.deleteRecord();
 	      key.save(); // Console logs an error here, but it data is stored correctly.
+	      console.log('The error above is expected and does not cause any issues');
 	    }
 	  });
 	});
+	for (i = 1; i < 5; i++) {
+	  this.get('model').set('pickG' + i, 'n/a');
+	  this.get('model').set('sG' + i, 'TBD');
+	}
+	for (i = 5; i < 10; i++) {
+	  this.get('model').set('sG' + i, 'TBD');
+	}
 	this.get('model').set('season', this.get('season'));
 	this.get('model').save();
 	this.set('done', true);

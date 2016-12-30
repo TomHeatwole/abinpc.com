@@ -12,7 +12,7 @@
   </div>
 </div>
 {{else}}
-  {{#unless done}}
+  {{#unless lastScreen}}
   {{#unless validKey}}
     NOTE: THIS PAGE IS COMPLETELY UNSTYLED. TODO: Style this page<br>
     Name: {{input value=model.name}}<br>
@@ -76,13 +76,33 @@
         </div>
       </div>      
       <br><br>
-      <br> WARNING: Submitting your picks cannot be undone! <br>
-      <button {{action "submit"}}>Submit</button>
+      <button {{action "cont2"}}>Continue</button>
       {{#if failure}}
 	<p style="color: RED">Make sure that you enter every pick</p>
       {{/if}}
     {{/if}}
   {{/unless}}
+  {{else unless done}}
+    Goodie Picks:<br>
+    NCAA Women's Champ: {{input value=model.pickG5}}<br>
+    NIT champ: {{input value=model.pickG6}}<br>
+    Biggest first round blowout: {{input value=model.pickG7}}<br>
+    First conference out:
+    <select id = "G8">
+      <option>--Select Conference--</option>
+      <option>Big 10</option>
+      <option>Big 12</option>
+      <option>SEC</option>
+      <option>PAC-10</option>
+      <option>ACC</option>
+    </select>
+    <br>
+    Dark horse champion: {{input value=model.pickG9}}<br>
+    <br> WARNING: Submitting your picks cannot be undone! <br>
+    <button {{action "submit"}}>Submit</button>
+    {{#if failure2}}
+      <p style="color: red">Please make sure you have selected every goodie pick</p>
+    {{/if}}
   {{else}}
     Your picks have been submited! Good luck.
   {{/unless}}

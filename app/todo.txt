@@ -1,6 +1,7 @@
 To do:
 
-- Home page
-- Rules
 - Goodies
-- Styles
+  - validations in picker
+  - view picks
+
+- Styles for picker
