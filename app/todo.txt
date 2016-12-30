@@ -3,6 +3,6 @@ To do:
 - Goodies
   - validations in picker
   - admin functions for picker
-  - scores
+  - make sure database is straight after picker
 
 - Styles for picker

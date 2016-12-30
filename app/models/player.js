@@ -94,5 +94,5 @@ export default DS.Model.extend({
   sG9: DS.attr('string'),
 
   // Total score from goodies
-  goodieScore: ('number')
+  goodieScore: DS.attr('number')
 });

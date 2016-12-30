@@ -26,7 +26,6 @@ export default Ember.Controller.extend({
 	  row['name'] = player.get('name');
 	  var rScores = ['placeholder',0,0,0,0,0,0]; // Round scores: rScores[1] = round 1 score
 	  var rCount = ['placeholder',0,0,0,0,0,0]; // rCount[1] = # of games correct in round 1
-	  // TODO: Implement goodies!
 	  for (var ii = 1; ii < 64; ii++) {
 	    var game = self.get('games')[ii];
 	    if (player.get('pick' + ii) === game.get('winner')) {
@@ -62,8 +61,9 @@ export default Ember.Controller.extend({
 	    total += rScores[ii];
 	    row['r' + ii + 'S'] = rScores[ii]; // r4S means "round 4 score"
 	    row['r' + ii + 'C'] = rCount[ii]; // r2C means "round 2 count" (# of correct games)
-	    row['goodies'] = 0; //TODO: Actually calculate goodie points
 	  }
+	  row['goodies'] = player.get('goodieScore');
+	  total += row['goodies'];
 	  row['total'] = total;
 	  var min = 0; //TODO: Implement with binary search instead
 	  while (min !== scores.length && total < scores[min]['total']) {
