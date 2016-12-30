@@ -8,13 +8,23 @@ by my father and myself, and neither of us care what it looks like.
 
 {{#unless correctPassword}}
   <form>
-    Enter the admin password: <br>
-    {{input type="password" value=enteredPassword}} <br>
-    {{#if incorrectPassword}}
-      <p style="color: RED">Incorrect password.</p>
-    {{else}}
-    {{/if}}
-    <button {{action "submitPassword"}}>Submit</button>
+    <div class = "row">
+      <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+	<a style="color: white">
+	  Enter the admin password: <br>
+	</a>
+	{{input type="password" value=enteredPassword style="text-color: black"}}<br>
+	{{#if incorrectPassword}}
+	  <div class = "row" style="height: 11px">
+	  </div>
+          <div class = "alert alert-danger">Incorrect Password</div>
+	{{else}}
+      {{/if}}
+      <div class = "row" style="height: 6px">
+      </div>
+      <button {{action "submitPassword"}}>Submit</button>
+      </div>
+    </div>
   </form>
 {{else}}
   {{#unless taskSelected}}

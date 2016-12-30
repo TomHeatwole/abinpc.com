@@ -1,8 +1,7 @@
 To do:
 
 - Goodies
-  - validations in picker
-  - admin functions for picker
+  - admin functions
   - make sure database is straight after picker
 
 - Styles for picker

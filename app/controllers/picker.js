@@ -133,8 +133,7 @@ export default Ember.Controller.extend({
       } else {
 	this.get('model').set('pickG8', document.getElementById('G8').value);
 	for (var i = 5; i < 10; i++) {
-	  if (!this.get('model').get('pickG' + i)) {
-	    console.log(i);
+	  if (!this.get('model').get('pickG' + i) || this.get('model').get('pickG' + i).length > 23) {
 	    this.set('failure2', true);
 	  }
 	}
