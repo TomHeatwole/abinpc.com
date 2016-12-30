@@ -13,75 +13,158 @@
 </div>
 {{else}}
   {{#unless lastScreen}}
-  {{#unless validKey}}
-    NOTE: THIS PAGE IS COMPLETELY UNSTYLED. TODO: Style this page<br>
-    Name: {{input value=model.name}}<br>
-    Access Key: {{input value=model.accessKey}}<br><br>
-    <button {{action "enterKey"}}>Make Picks</button>
-    {{#if nameError}}
-      <p style="color: RED">Please enter a valid name.</p>
-    {{else if keyError}}
-      <p style="color: RED">The access key entered is invalid.</p>
-    {{/if}}
-  {{else}}
-    {{#if noneSelected}}
-      {{#unless ACompleted}}
-        <br><br><button {{action "selectA"}}>{{AName}} picks</button>
-      {{/unless}}
-      {{#unless BCompleted}}
-        <br><br><button {{action "selectB"}}>{{BName}} picks</button>
-      {{/unless}}
-      {{#unless CCompleted}}
-        <br><br><button {{action "selectC"}}>{{CName}} picks</button>
-      {{/unless}}
-      {{#unless DCompleted}}
-        <br><br><button {{action "selectD"}}>{{DName}} picks</button>
-      {{/unless}}
-    {{else if ASelected}}
-      {{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
-    {{else if BSelected}}
-      {{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
-    {{else if CSelected}}
-      {{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
-    {{else if DSelected}}
-      {{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
-    {{else if FSelected}}  
-      <br><br>
-      <div class="row">
-        <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
-          <select id = "F1">
-            <option>--Select Team--</option>
-            <option>{{FA}}</option>
-            <option>{{FB}}</option>
-          </select>
-        </div>
+    {{#unless validKey}}
+      <div class = "row">
+	<div class = "col-sm-6 col-sm-offset-3 paragraph2">
+	  <div class = "row" style = "height: 6px">
+	  </div>
+	  <div class = "row">
+	    <div class = "col-sm-4">
+	      <a style="color: white">
+		Name:
+	      </a>
+	    </div>
+	    <div class = "col-sm-8">
+	      {{input value=model.name style="width: 95%"}}<br>
+	    </div>
+	  </div>
+	  <div class = "row" style="height: 8px">
+	  </div>
+	  <div class = "row">
+	    <div class = "col-sm-4">
+	      <a style="color: white">
+		Access Key:
+	      </a>
+	    </div>
+	    <div class = "col-sm-8">
+	      {{input value=model.accessKey style="width: 95%"}}
+	    </div>
+	  </div>
+	  <div class = "row" style = "height: 8px">
+	  </div>
+	  <div class = "row">
+	    <p style= "color: #E6CCB4">
+	      If you wish to play but don't have a valid access key, 
+	      <a href="mailto:tomh@virginia.edu" style = "color: darkslateblue; 
+	 	text-decoration: underline; text-align: center">
+	      contact the commissioner</a> for an access key.
+	    </p>
+	  </div>
+	  <button class = "btn-success" style="width: 95%" {{action "enterKey"}}>Make Picks</button>
+	  {{#if nameError}}
+	    <div class = "row" style = "height: 8px">
+	    </div>
+	    <center>
+	      <div class = "alert alert-danger" style="width: 95%">Please enter a valid name.</div>
+	    </center>
+	  {{else if keyError}}
+	    <div class = "row" style = "height: 8px">
+	    </div>
+	    <center>
+	      <div class = "alert alert-danger" style="width: 95%">Error: Invalid access key</div>
+	    </center>
+	  {{/if}}
+	  <div class = "row" style = "height: 6px">
+	  </div>
+	</div>
       </div>
-      <div class="row">
-        <div class="col-md-3"></div>
-        <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
-          <select id = "F3">
-            <option>--Select Team--</option>
-            <option>{{FW1}}</option>
-            <option>{{FW2}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
-          <select id = "F2">
-            <option>--Select Team--</option>
-            <option>{{FC}}</option>
-            <option>{{FD}}</option>
-          </select>
-        </div>
-      </div>      
-      <br><br>
-      <button {{action "cont2"}}>Continue</button>
-      {{#if failure}}
-	<p style="color: RED">Make sure that you enter every pick</p>
+    {{else}}
+      {{#if noneSelected}}
+	<div class = "row">
+	  <div class = "col-sm-4 col-sm-offset-4 paragraph">
+	    <div class="row" style="height: 8px">
+	    </div>
+	    {{#unless ACompleted}}
+	      <div class = "row">
+		<div class = "col-lg-8 col-lg-offset-2" style="text-align: center">
+		  <div class = "fakeButton" style="height: 5vh" {{action "selectA"}}>
+	 	    {{AName}} picks
+	  	  </div>  
+	        </div> 
+	      </div>
+	      <div class="row" style="height: 4px">
+	      </div>
+	    {{/unless}}
+	    {{#unless BCompleted}}
+	      <div class = "row">
+		<div class = "col-lg-8 col-lg-offset-2" style="text-align: center">
+		  <div class = "fakeButton" style="height: 5vh" {{action "selectB"}}>
+	 	    {{BName}} picks
+	  	  </div>  
+	        </div> 
+	      </div>
+	      <div class="row" style="height: 4px">
+	      </div>
+	    {{/unless}}
+	    {{#unless CCompleted}}
+	      <div class = "row">
+		<div class = "col-lg-8 col-lg-offset-2" style="text-align: center">
+		  <div class = "fakeButton" style="height: 5vh" {{action "selectC"}}>
+	 	    {{CName}} picks
+	  	  </div>  
+	        </div> 
+	      </div>
+	      <div class="row" style="height: 4px">
+	      </div>
+	    {{/unless}}
+	    {{#unless DCompleted}}
+	      <div class = "row">
+		<div class = "col-lg-8 col-lg-offset-2" style="text-align: center">
+		  <div class = "fakeButton" style="height: 5vh" {{action "selectD"}}>
+	 	    {{DName}} picks
+	  	  </div>  
+	        </div> 
+	      </div>
+	      <div class="row" style="height: 4px">
+	      </div>
+	    {{/unless}}
+	  </div>
+	</div>
+      {{else if ASelected}}
+	{{region-picker model=model region="A" regionName=AName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
+      {{else if BSelected}}
+	{{region-picker model=model region="B" regionName=BName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
+      {{else if CSelected}}
+	{{region-picker model=model region="C" regionName=CName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
+      {{else if DSelected}}
+	{{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
+      {{else if FSelected}}  
+	<br><br>
+	<div class="row">
+          <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+            <select id = "F1">
+              <option>--Select Team--</option>
+              <option>{{FA}}</option>
+              <option>{{FB}}</option>
+            </select>
+          </div>
+	</div>
+	<div class="row">
+          <div class="col-md-3"></div>
+          <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+            <select id = "F3">
+              <option>--Select Team--</option>
+              <option>{{FW1}}</option>
+              <option>{{FW2}}</option>
+            </select>
+          </div>
+	</div>
+	<div class="row">
+          <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
+            <select id = "F2">
+              <option>--Select Team--</option>
+              <option>{{FC}}</option>
+              <option>{{FD}}</option>
+            </select>
+          </div>
+        </div>      
+	<br><br>
+	<button {{action "cont2"}}>Continue</button>
+	{{#if failure}}
+	  <p style="color: RED">Make sure that you enter every pick</p>
+	{{/if}}
       {{/if}}
-    {{/if}}
-  {{/unless}}
+    {{/unless}}
   {{else unless done}}
     Goodie Picks:<br>
     NCAA Women's Champ: {{input value=model.pickG5}}<br>

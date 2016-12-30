@@ -4,6 +4,14 @@ body {
   background: linear-gradient(to left, #4775d1,  #b8caed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
 }
 
+input {
+  width: 95%;
+}
+
+.inputSmall {
+  width: 80%;
+}
+
 .paragraph {
   background-color: #E6CCB4;
   color: #AE4E02;

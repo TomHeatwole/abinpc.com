@@ -1,8 +1,12 @@
 {{yield}}
 {{!-- The following parameters should be passed in: region, regionName,  model, teamNameMap --}}
 
+<div class="row">
+<div class = "col-sm-8 col-sm-offset-2 paragraph2" style="color: black; font-size: 18px; min-width: 693px">
 <h1 style="text-align: center">{{regionName}}</h1>
- <div class="row">
+<div class="row" style="height:20px">
+</div>
+<div class="row">
   <div class = "col-md-3" style="text-align: center" {{action "pick"}}>
     <select id = "p1">
       <option>--Select Team--</option>
@@ -146,10 +150,26 @@
 </div>
 <br>
 <br>
-<button {{action "check"}}>Continue</button>
+<div class="row">
+  <center>
+    <button class = "btn-success" style="width: 70%; height: 55px" {{action "check"}}>Continue</button>
+  </center>
+</div>
+<div class="row" style="height:14px">
+</div>
 
 {{#if failure2}} {{!-- Check failure2 first because of edge case where failure2 processes as failure1--}}
-  <p style="Color:RED"> Error: Some picks do not make sense with previous picks. </p>
+  <center>
+    <div class = "alert alert-danger" style="width: 72%">
+      Error: Some picks do not make sense with previous picks.
+    </div>
+  </center>
 {{else if failure1}}
-  <p style="Color:RED"> Please make sure that all of the picks have been entered. </p>
+  <center>
+    <div class = "alert alert-danger" style="width: 72%">
+      Error: Please make sure that all of the picks have been entered.
+    </div>
+  </center>
 {{/if}}
+</div>
+</div>

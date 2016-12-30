@@ -155,6 +155,7 @@ export default Ember.Controller.extend({
 	for (j = 5; j < 10; j++) {
 	  this.get('model').set('sG' + j, 'TBD');
 	}
+	this.get('model').set('goodieScore', 0);
 	this.get('model').set('season', this.get('season'));
 	this.get('model').save();
 	this.set('done', true);
