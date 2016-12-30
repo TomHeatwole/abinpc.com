@@ -99,6 +99,25 @@ li a:hover {
   cursor: default;
 }
 
+.fakeButton2 {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 26px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #010a1c;
+  color: #E6CCB4;
+}
+
+.fakeButton2:hover {
+  background-color: #E6CCB4;
+  color: darkslateblue;
+  text-color: darkslateblue;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
 table {
   border-color: #CC9866;
 }

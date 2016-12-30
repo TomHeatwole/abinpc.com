@@ -14,7 +14,13 @@
     {{region-picks region="D" regionName=D teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
   {{else if FSelected}}
     <div class="row">
-      <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
+      <div class = "col-sm-2 col-sm-offset-2" style="font-size:25px; text-align: center">
+	<br>
+	<button class="btn-danger" style="width: 80%; height: 40px" {{action "back"}}>
+	  <i class="fa fa-arrow-left"></i> Back
+	</button>
+      </div>
+      <div class="col-sm-4" style="text-align: center">
 	<h1>Final 4 Picks</h1>
       </div>
     </div>
@@ -37,13 +43,57 @@
     </div>
     <button {{action "back"}}>Back</button>
   {{else}}
-    <br><br>
-    <button {{action "selectA"}}>View {{A}} picks</button>
-    <button {{action "selectB"}}>View {{B}} picks</button>
-    <button {{action "selectC"}}>View {{C}} picks</button>
-    <button {{action "selectD"}}>View {{D}} picks</button>
-    <button {{action "selectF"}}>View {{F}} picks</button>
-    <br><br>
+    <div class = "row">
+      <div class = "col-sm-4 col-sm-offset-4 paragraph">
+	<div class="row" style="height: 8px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
+	    <div class = "fakeButton" style="height: 5vh" {{action "selectA"}}>
+	      View {{A}} picks
+	    </div>  
+	  </div> 
+	</div>
+	<div class="row" style="height: 4px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
+	    <div class = "fakeButton" style="height: 5vh" {{action "selectB"}}>
+	      View {{B}} picks
+	    </div>  
+	  </div> 
+	</div>
+	<div class="row" style="height: 4px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
+	    <div class = "fakeButton" style="height: 5vh" {{action "selectC"}}>
+	      View {{C}} picks
+	    </div>  
+	  </div> 
+	</div>
+	<div style="height: 4px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
+	    <div class = "fakeButton" style="height: 5vh" {{action "selectD"}}>
+	      View {{D}} picks
+	    </div>  
+	  </div> 
+	</div>
+	<div class="row" style="height: 4px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
+	    <div class = "fakeButton" style="height: 5vh" {{action "selectF"}}>
+	      View {{F}} picks
+	    </div>  
+	  </div> 
+	</div>
+	<div class="row" style="height: 8px">
+	</div>
+      </div>
+    </div>
   {{/if}}
 {{else}}
 <div class = "row">
