@@ -1,7 +1,8 @@
 {{outlet}}
 
 {{nav-bar}}
-
+<div class = "navOffset">
+</div>
 {{#unless allowPicks}}
   {{#if ASelected}}
     {{region-picks region="A" regionName=A teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
@@ -45,5 +46,11 @@
     <br><br>
   {{/if}}
 {{else}}
-  Picks are still being accepted. You may view picks once the games have started.
+<div class = "row">
+  <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+    <a style="color: white">
+      You may view picks once everyone's picks are in and the games have stared.
+    </a>
+  </div>
+</div>
 {{/unless}}

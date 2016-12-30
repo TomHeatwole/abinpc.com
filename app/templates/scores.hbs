@@ -1,13 +1,34 @@
 {{outlet}}
 {{nav-bar}}
+<div class="navOffset">
+</div>
 
 {{#if allowPicks}}
-  You can view scores here once games have started.
+<div class = "row">
+  <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+    <a style="color: white">
+      You may view the leaderboard here once everyone's picks are in and the games have started.
+    </a>
+  </div>
+</div>
 {{else}}
   {{#if loading}}
-    loading...
+  <div class = "row">
+    <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+      <a style="color: white">
+	ABINPC is Loading...
+      </a>
+    </div>
+  </div>
   {{else if loadError}}
-    There was an error loading the scores. Please refresh the page.
+  <div class = "row">
+    <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+      <a style="color: white">
+	There was an error loading the scores. Please try again.
+      </a>
+	<br><a class="fakeButton" {{action "refresh"}}>Refresh Page</a>
+    </div>
+  </div>
   {{else}}
     <div class="row">
       <div class="col-sm-4 col-sm-offset-4" style="text-align: center">
@@ -28,6 +49,7 @@
 	    <td>Round 4</td>
 	    <td>Final 4</td>
 	    <td>Nat. Champ</td>
+	    <td>Goodies</td>
 	  </tr>
 	  {{#each scores as |playerScores|}}
 	    <tr>
@@ -39,6 +61,7 @@
 	      <td class="tdNormal">{{playerScores.r4S}} ({{playerScores.r4C}})</td>
 	      <td class="tdNormal">{{playerScores.r5S}} ({{playerScores.r5C}})</td>
 	      <td class="tdNormal">{{playerScores.r6S}} ({{playerScores.r6C}})</td>
+	      <td class="tdNormal">{{playerScores.goodies}}</td>
 	    </tr>
 	  {{/each}}
 	</table>

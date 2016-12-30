@@ -62,6 +62,7 @@ export default Ember.Controller.extend({
 	    total += rScores[ii];
 	    row['r' + ii + 'S'] = rScores[ii]; // r4S means "round 4 score"
 	    row['r' + ii + 'C'] = rCount[ii]; // r2C means "round 2 count" (# of correct games)
+	    row['goodies'] = 0; //TODO: Actually calculate goodie points
 	  }
 	  row['total'] = total;
 	  var min = 0; //TODO: Implement with binary search instead
