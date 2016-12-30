@@ -53,6 +53,29 @@
 	<h1>Goodies</h1>
       </div>
     </div>
+    <br>
+    <br>
+    <div class="row tableContainer">
+      <div class="col-sm-12" align="center">
+	<table border="4" cellpadding="3" cellspacing="3">
+	  <tr class="trHead"> 
+	    <td>Player</td>
+	    <td>Low Rd. 2</td>
+	    <td>Low Sweet 16</td>
+	    <td>Low Final 4</td>
+	    <td>Best Region</td>
+	    <td>Women's</td>
+	    <td>NIT</td>
+	    <td>Rd.1 Blowout</td>
+	    <td>Worst Conference</td>
+	    <td>Dark horse</td>
+	  </tr>
+	  {{#each GPicks as |playerPicks|}}
+	    {{view-picks-row player=playerPicks correct=GCorrect incorrect=GIncorrect round=5}}
+	  {{/each}}
+	</table>
+      </div>
+    </div>
   {{else}}
     <div class = "row">
       <div class = "col-sm-4 col-sm-offset-4 paragraph">

@@ -2,6 +2,7 @@ To do:
 
 - Goodies
   - validations in picker
-  - view picks
+  - admin functions for picker
+  - scores
 
 - Styles for picker

@@ -101,7 +101,6 @@ export default Ember.Controller.extend({
       }
     },
     cont2() {
-      var self = this;
       this.set('failure', false);
       for (var i = 1; i < 4; i++) {
 	if (this.get('model').get('pick6' + i) === 'TBD') {
@@ -150,12 +149,12 @@ export default Ember.Controller.extend({
 	    }
 	  });
 	});
-	for (i = 1; i < 5; i++) {
-	  this.get('model').set('pickG' + i, 'n/a');
-	  this.get('model').set('sG' + i, 'TBD');
+	for (var j = 1; j < 5; j++) {
+	  this.get('model').set('pickG' + j, 'n/a');
+	  this.get('model').set('sG' + j, 'TBD');
 	}
-	for (i = 5; i < 10; i++) {
-	  this.get('model').set('sG' + i, 'TBD');
+	for (j = 5; j < 10; j++) {
+	  this.get('model').set('sG' + j, 'TBD');
 	}
 	this.get('model').set('season', this.get('season'));
 	this.get('model').save();

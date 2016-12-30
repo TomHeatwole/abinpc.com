@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   r2: false,
   r3: false,
   F: false, // Final 4
+  G: false, // Goodies
   pCorrect: [],
   pIncorect: [],
   
@@ -27,6 +28,9 @@ export default Ember.Component.extend({
       case 4: // 4 is for Final 4
 	this.set('F', true);
 	break;
+      case 5: // 5 if for Goodies
+	this.set('G', true);
+	break;	
     }
     var pCorrect = [];
     var pIncorrect = [];

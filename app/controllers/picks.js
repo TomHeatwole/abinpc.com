@@ -24,6 +24,9 @@ export default Ember.Controller.extend({
   FPicks: [],
   FCorrect: [],
   FIncorrect: [],
+  GPicks: [],
+  GCorrect: [],
+  GIncorrect: [],
 
   actions: {
     selectA() {
@@ -84,32 +87,34 @@ export default Ember.Controller.extend({
 	displayNames[i] = names;
       }
       this.set('displayNames', displayNames); 
+
+      // Final 4
       var FPicks = [];
       var FCorrect = [];
       var FIncorrect = [];
       for (i = 0; i < this.get('players').length; i++) {
-	var row1 = []; // pciks
-	var row2 = []; // correct
-	var row3 = []; // incorrect
-	row1['name'] = this.get('players')[i].get('name');
-	row1['accessKey'] = this.get('players')[i].get('accessKey');
+	var row1F = []; // pciks
+	var row2F = []; // correct
+	var row3F = []; // incorrect
+	row1F['name'] = this.get('players')[i].get('name');
+	row1F['accessKey'] = this.get('players')[i].get('accessKey');
 	for (var ii = 61; ii < 64; ii++) {
-	  row1['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + ii))];
-	if (this.get('games')[ii].get('winner') === 'TBD') {
-	  row2['g' + ii] = false;
-	  row3['g' + ii] = (eliminated.includes(this.get('players')[i].get('pick' + ii))); 
-	} else if (row1['p' + ii] === this.get('teamNameMap')[this.get('games')[ii].get('winner')]) {
-	  row2['g' + ii] = true;
-	  row3['g' + ii] = false;
-	} else {
-	  row2['g' + ii] = false;
-	  row3['g' + ii] = true;
-	}
+	  row1F['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + ii))];
+	  if (this.get('games')[ii].get('winner') === 'TBD') {
+	    row2F['g' + ii] = false;
+	    row3F['g' + ii] = (eliminated.includes(this.get('players')[i].get('pick' + ii))); 
+	  } else if (row1F['p' + ii] === this.get('teamNameMap')[this.get('games')[ii].get('winner')]) {
+	    row2F['g' + ii] = true;
+	    row3F['g' + ii] = false;
+	  } else {
+	    row2F['g' + ii] = false;
+	    row3F['g' + ii] = true;
+	  }
+        }
+        FPicks.push(row1F);
+        FCorrect[this.get('players')[i].get('accessKey')] = row2F;
+        FIncorrect[this.get('players')[i].get('accessKey')] = row3F;
       }
-      FPicks.push(row1);
-      FCorrect[this.get('players')[i].get('accessKey')] = row2;
-      FIncorrect[this.get('players')[i].get('accessKey')] = row3;
-    }
       this.set('FPicks', FPicks);
       this.set('FCorrect', FCorrect);
       this.set('FIncorrect', FIncorrect);
@@ -121,6 +126,37 @@ export default Ember.Controller.extend({
       this.set('DSelected', false);
       this.set('FSelected', false);
       this.set('GSelected', true);
+
+      //Goodies
+      var GPicks = [];
+      var GCorrect = [];
+      var GIncorrect = [];
+      for (var i = 0; i < this.get('players').length; i++) {
+	var row1G = []; // pciks
+	var row2G = []; // correct
+	var row3G = []; // incorrect
+	row1G['name'] = this.get('players')[i].get('name');
+	row1G['accessKey'] = this.get('players')[i].get('accessKey');
+	for (var ii = 1; ii < 10; ii++) {
+	  row1G['G' + ii] = this.get('players')[i].get('pickG' + ii);
+	  if (this.get('players')[i].get('sG' + ii) === 'TBD') { 
+	    row2G['G' + ii] = false;
+	    row3G['G' + ii] = false;
+	  } else if (this.get('players')[i].get('sG' + ii) === 'correct') {
+	    row2G['G' + ii] = true;
+	    row3G['G' + ii] = false;
+	  } else {
+	    row2G['G' + ii] = false;
+	    row3G['G' + ii] = true;
+	  }
+	}
+	GPicks.push(row1G);
+        GCorrect[this.get('players')[i].get('accessKey')] = row2G;
+        GIncorrect[this.get('players')[i].get('accessKey')] = row3G;
+      }
+      this.set('GPicks', GPicks);
+      this.set('GCorrect', GCorrect);
+      this.set('GIncorrect', GIncorrect);
     },
     back() {
       this.set('ASelected', false);
