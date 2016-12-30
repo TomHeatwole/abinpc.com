@@ -3,32 +3,32 @@
 <div class="navOffset">
 </div>
 
-{{#if allowPicks}}
+{{#if loading}}
 <div class = "row">
   <div class = "col-sm-4 col-sm-offset-4 paragraph2">
     <a style="color: white">
-      You may view the leaderboard here once everyone's picks are in and the games have started.
+      ABINPC is Loading...
     </a>
   </div>
 </div>
 {{else}}
-  {{#if loading}}
-  <div class = "row">
-    <div class = "col-sm-4 col-sm-offset-4 paragraph2">
-      <a style="color: white">
-	ABINPC is Loading...
-      </a>
+  {{#if loadError}}
+    <div class = "row">
+      <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+        <a style="color: white">
+	  There was an error loading the scores. Please try again.
+	</a>
+        <br><a class="fakeButton" {{action "refresh"}}>Refresh Page</a>
+      </div>
     </div>
-  </div>
-  {{else if loadError}}
-  <div class = "row">
-    <div class = "col-sm-4 col-sm-offset-4 paragraph2">
-      <a style="color: white">
-	There was an error loading the scores. Please try again.
-      </a>
-	<br><a class="fakeButton" {{action "refresh"}}>Refresh Page</a>
+  {{else if allowPicks}}
+    <div class = "row">
+      <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+        <a style="color: white">
+	  You may view the leaderboard once everyone's picks are in and the games have started.
+	</a>
+      </div>
     </div>
-  </div>
   {{else}}
     <div class="row">
       <div class="col-sm-4 col-sm-offset-4" style="text-align: center">

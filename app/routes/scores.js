@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     var gameSet = [];
     var self = this;
     this.store.findRecord('admin', 1).then(function(admin) {
-      controller.set('allowPicks', admin.get('pre')); 
+      controller.set('allowPicks', admin.get('pre'));
       self.store.findAll('player').then(function(players) {
 	players.forEach(function(player) {
 	  if (player.get('season') === admin.get('season')) {

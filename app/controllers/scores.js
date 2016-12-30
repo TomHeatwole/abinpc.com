@@ -6,10 +6,10 @@ export default Ember.Controller.extend({
   players: [],
   games: [],
   scores: [],
-  allowPicks: true,
 
   loading: true,
   loadError: false,
+  allowPicks: false,
 
   init: function() {
     this._super();
