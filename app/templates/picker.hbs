@@ -130,7 +130,7 @@
 	{{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
       {{else if FSelected}}  
 	<div class = "row">
-	<div class= "col-sm-4 col-sm-offset-4 paragraph2" style="color: black; font-size: 18px">
+	<div class= "col-sm-4 col-sm-offset-4 paragraph2" style="color: #010a1c; font-size: 18px">
 	<div class= "row">
 	  <h1>Final Four</h1>
 	</div>
@@ -163,7 +163,7 @@
             </select>
           </div>
         </div>      
-	<div class = "row" style="height: 15px">
+	<div class = "row" style="height: 20px">
 	</div>
 	<div class = "row">
 	  <center>
@@ -174,7 +174,7 @@
 	  {{#if failure}}
 	    <div class = "row" style = "height: 10px">
 	    </div>
-	    <div class = "row">
+	    <div class = "row" style = "text-align: center">
 	      <center>
 		<div class = "alert alert-danger" style="width: 67%">
 		  Make sure that you enter every pick.
@@ -190,27 +190,104 @@
       {{/if}}
     {{/unless}}
   {{else unless done}}
-    Goodie Picks:<br>
-    NCAA Women's Champ: {{input value=model.pickG5}}<br>
-    NIT champ: {{input value=model.pickG6}}<br>
-    Biggest first round blowout: {{input value=model.pickG7}}<br>
-    First conference out:
-    <select id = "G8">
-      <option>--Select Conference--</option>
-      <option>Big 10</option>
-      <option>Big 12</option>
-      <option>SEC</option>
-      <option>PAC-10</option>
-      <option>ACC</option>
-    </select>
-    <br>
-    Dark horse champion: {{input value=model.pickG9}}<br>
-    <br> WARNING: Submitting your picks cannot be undone! <br>
-    <button {{action "submit"}}>Submit</button>
-    {{#if failure2}}
-      <p style="color: red">Please make a valid entry for each goodie.</p>
-    {{/if}}
+    <div class = "row">
+      <div class = "col-sm-8 col-sm-offset-2 paragraph2" style="font-size: 28px">
+	<div class = "row">
+	  <h1>Goodies</h1>
+	</div>
+	<div class = "row" style="height: 12px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-4">
+	    <a style="color: white">
+	      NCAA women's Champ:
+	    </a>
+	  </div>
+	  <div class = "col-sm-8">
+	    {{input value=model.pickG5}}<br>
+	  </div>
+	</div>
+	<div class = "row" style="height: 8px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-4">
+	    <a style="color: white">
+	      NIT champ:
+	    </a>
+	  </div>
+	  <div class = "col-sm-8">
+	    {{input value=model.pickG6}}<br>
+	  </div>
+	</div>
+	<div class = "row" style="height: 8px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-4">
+	    <a style="color: white">
+	      Round 1 Blowout:
+	    </a>
+	  </div>
+	  <div class = "col-sm-8">
+	    {{input value=model.pickG7}}<br>
+	  </div>
+	</div>
+	<div class = "row" style="height: 8px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-4">
+	    <a style="color: white">
+	      First conference out:
+	    </a>
+	  </div>
+	  <div class = "col-sm-8">
+	    <select id = "G8" style="width: 95%">
+	      <option>--Select Conference--</option>
+	      <option>Big 10</option>
+	      <option>Big 12</option>
+	      <option>SEC</option>
+	      <option>PAC-10</option>
+	      <option>ACC</option>
+	    </select>
+	  </div>
+	</div>
+	<div class = "row" style="height: 8px">
+	</div>
+	<div class = "row">
+	  <div class = "col-sm-4">
+	    <a style="color: white">
+	      Dark horse champion:
+	    </a>
+	  </div>
+	  <div class = "col-sm-8">
+	    {{input value=model.pickG9}}<br>
+	  </div>
+	</div>
+	<div class = "row" style="height: 8px">
+        </div>
+	<div class = "row">
+	    <p style= "color: #E6CCB4; font-size:28px text-indent: 0px">
+	      WARNING: Submitting picks can't be undone. 
+	    </p>
+	</div>
+	<button class="btn-success" style="width: 80%" {{action "submit"}}>Submit</button>
+	<div class="row" style="height:8px">
+	</div>
+	{{#if failure2}}
+	  <center>
+	    <div class = "alert alert-danger" style="width: 80%">
+	      Please make a valid entry for each goodie.
+	    </div>
+	  </center>
+	{{/if}}
+      </div>
+    </div>
   {{else}}
-    Your picks have been submited! Good luck.
+    <div class = "row">
+      <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+        <a style="color: white">
+	  Your picks have been submitted. Good luck!
+        </a>
+      </div>
+    </div>
   {{/unless}}
 {{/unless}}
