@@ -1,7 +1,15 @@
 To do:
 
+
+- Styles
+  - Fix rows
+  - Re-implement picker with radio buttons
+  - New color scheme
+
+
 - Goodies
   - admin functions
-  - make sure database is straight after picker
 
-- Styles for picker
+- Deploy
+  - Fix route refresh error
+  - Link Abinpc.com
