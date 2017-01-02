@@ -2,7 +2,6 @@ To do:
 
 
 - Styles
-  - Fix rows
   - Re-implement picker with radio buttons
   - New color scheme
 
