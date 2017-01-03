@@ -122,7 +122,7 @@ li a:hover {
   line-height: 8vmin;
   height: 8vmin;
   text-align: center;
-  background-color: #563d7c;
+  background-color: #AE4E02;
   color: #E6CCB4;
 }
 
@@ -159,7 +159,7 @@ table {
 
 .trHead {
   color: WHITE;
-  background-color: #563d7c;
+  background-color: #AE4E02;
   
 }
 .tdNormal {
@@ -192,7 +192,6 @@ td {
   height: 50px;
   text-align: center;
 }
-
 
 select {
   width: 200px;

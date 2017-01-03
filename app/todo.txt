@@ -3,11 +3,16 @@ To do:
 
 - Styles
   - Re-implement picker with radio buttons
-  - New color scheme
 
 
 - Goodies
   - admin functions
 
-- Deploy
-  - Link Abinpc.com
+
+- Absolutely necessary before minimum viable product:
+  - Deploy
+    - Link Abinpc.com
+  - Styles
+    - Redo rules page
+  - Bug fix:
+    - Add loading screen for view-picks page
