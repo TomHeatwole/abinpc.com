@@ -2,12 +2,11 @@
 <div class = "container-fluid">
 
 {{nav-bar}}
-<div class="navOffset">
+<div class = "navOffset">
 </div>
-
 {{#if loading}}
 <div class = "row">
-  <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+  <div class = "col-sm-6 col-sm-offset-3 paragraphError">
     <a style="color: white">
       ABINPC is Loading...
     </a>
@@ -16,7 +15,7 @@
 {{else}}
   {{#if loadError}}
     <div class = "row">
-      <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+      <div class = "col-sm-4 col-sm-offset-4 paragraphError">
         <a style="color: white">
 	  There was an error loading the scores. Please try again.
 	</a>
@@ -25,7 +24,7 @@
     </div>
   {{else if allowPicks}}
     <div class = "row">
-      <div class = "col-sm-4 col-sm-offset-4 paragraph2">
+      <div class = "col-sm-6 col-sm-offset-3 paragraphError">
         <a style="color: white">
 	  You may view the leaderboard once everyone's picks are in and the games have started.
 	</a>

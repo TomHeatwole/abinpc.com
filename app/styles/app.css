@@ -25,8 +25,16 @@ input {
   text-indent: 0px;
   text-align: center;
   background-color: #AE4E02;
-  border: 3px solid;
-  border-color: #CC9866;
+  border: solid 2px #c6cad1;
+}
+
+.paragraphError {
+  background-color: #563d7c;
+  font-size: 6vmin;
+  text-align: center;
+  color: white;
+  border: solid 2px #c6cad1;
+  border-radius: 25px;
 }
 
 .paragraphHome {
@@ -47,7 +55,7 @@ a:hover {
 
 h1 {
   color: #010a1c;
-  font-size: 60px;
+  font-size: 8vmin;
 }
 
 h2 {
@@ -112,7 +120,7 @@ li a:hover {
   font-size: 26px;
   line-height: 40px;
   text-align: center;
-  background-color: #AE4E02;
+  background-color: #563d7c;
   color: #E6CCB4;
 }
 
