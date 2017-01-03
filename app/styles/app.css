@@ -1,9 +1,14 @@
 body {
-  background-color: #c5cbd8;
+  background-color: #edeef0; 
 }
 
 input {
   width: 95%;
+}
+
+.title {
+  font-size: 12vmin;
+  font-family: 'Reem Kufi', sans-serif;
 }
 
 .inputSmall {
@@ -11,6 +16,8 @@ input {
 }
 
 .paragraph {
+  background-color: white;
+  border: solid 1px black;
   color: #AE4E02;
 }
 .paragraph2 {
@@ -21,6 +28,19 @@ input {
   border: 3px solid;
   border-color: #CC9866;
 }
+
+.paragraphHome {
+  text-align: center;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.btnHome {
+  height: 10vmin;
+  width: 100%;
+  font-size: 7vmin;
+  font-family: sans-serif;
+}
+
 a:hover {
   text-decoration: none;
 }

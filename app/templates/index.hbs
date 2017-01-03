@@ -1,47 +1,39 @@
 {{outlet}}
+<link href="https://fonts.googleapis.com/css?family=Vollkorn|Reem+Kufi|Yanone+Kaffeesatz" rel="stylesheet">
 <div class = "container-fluid">
 
 {{nav-bar}}
 <div class="navOffset">
 </div>
 <div class = "row" style="text-align: center">
-  <div class = "col-sm-8 col-sm-offset-2 paragraph">
-    <h1> Welcome to ABINPC!</h1> 
-    <div style="height: 5vmin">
+  <div class = "col-sm-8 col-sm-offset-2 paragraphHome">
+    <h1 class = "title">ABINPC.COM</h1> 
+    <div style="height: 3vmin">
     </div>
     <div class = "row">
       <div class = "col-sm-8 col-sm-offset-2">
-	<p style="font-size: 20px"> 
-	  Abinpc is the online march madness picking competition where bonus points are awarded for
-	  correctly picking upsets, correctly picking the NIT champion, the women's champion, the 
-	  lowest seed to get to each round, you name it! 
-	  Abinpc was launched in 1993 by Jeff Heatwole, making it the oldest online march madness
-	  picking contest in the world! Jeff served as Abinpc commissioner for 24 seasons, finally
-	  retiring after the 2016 season. Give it up for Jeff!
-	</p>
-	<p style="font-size: 20px">
-	  The new website was built by his son, Tom, who will take over as commissioner for the 2017
-	  Abinpc.
+	<p style="font-size: 6vmin; text-align: center; text-indent: 0px"> 
+	  The world's oldest online March Madness picking contest
 	</p>
 	<div style="height: 4vmin">
 	</div>
-	<div class = "row">
+	<!--div class = "row">
 	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
 	    <div class = "fakeButton" style="height: 5vh" {{action "rules"}}>
 	      Read the Rules
 	    </div>  
 	  </div>
-	</div>
+	</div-->
 	<div class="row" style="height: 4px">
 	</div>
 	<div class = "row">
-	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
-	    <div class = "fakeButton" style="height: 5vh" {{action "picker"}}>
-	      Make Picks
-	    </div>  
+	  <div class = "col-sm-10 col-sm-offset-1" style="text-align: center">
+	    <button class = "btn-success btnHome" {{action "picker"}} style="font-family: default">
+	      Enter Picks <i class="fa fa-long-arrow-right"></i>
+	    </button>  
 	  </div>
 	</div>
-	<div class="row" style="height: 4px">
+	<!--div class="row" style="height: 4px">
 	</div>
 	<div class = "row">
 	  <div class = "col-sm-8 col-sm-offset-2" style="text-align: center">
@@ -51,7 +43,7 @@
 	  </div>
 	</div>
 	<div class="row" style="height: 2vmin">
-	</div>
+	</div-->
       </div>
     </div>
   </div>
