@@ -1,7 +1,5 @@
 body {
-  background: #b8caed; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #4775d1, #b8caed); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #4775d1,  #b8caed); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
+  background-color: #c5cbd8;
 }
 
 input {
@@ -13,10 +11,7 @@ input {
 }
 
 .paragraph {
-  background-color: #E6CCB4;
   color: #AE4E02;
-  border: 3px solid;
-  border-color: #CC9866;
 }
 .paragraph2 {
   font-size: 40px;
@@ -50,19 +45,21 @@ p {
 }
 
 .head {
-  height: 90px;
-  background-color: #010a1c;
+  padding-right: 3vmin;
   text-align: center;
   font-family: 'Monda', sans-serif;
-  font-size: 8vmin;
+  font-size: 5vmin;
+  line-height: 16px;
   color: #AE4E02;
   cursor: default;
 }
 
 ul {
+  background: #b8caed; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #0c2d70, #010a1c); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #0c2d70, #010a1c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
   list-style-type: none;
   overflow: hidden;
-  background-color: #010a1c;
 }
 
 li {

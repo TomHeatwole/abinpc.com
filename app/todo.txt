@@ -10,5 +10,4 @@ To do:
   - admin functions
 
 - Deploy
-  - Fix route refresh error
   - Link Abinpc.com
