@@ -153,6 +153,22 @@ li a:hover {
   cursor: default;
 }
 
+.fakeButton3 {
+  font-size: 5vmin;
+  line-height: 8vmin;
+  height: 8vmin;
+  text-align: center;
+  background-color: #563d7c;
+  color: #E6CCB4;
+}
+
+.fakeButton3:hover { 
+  background-color: #FFCCB4;
+  color: darkslateblue;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
 table {
   border-color: #CC9866;
 }

@@ -4,6 +4,26 @@
 {{nav-bar}}
 <div class = "navOffset">
 </div>
+{{#if loading}}
+<div class = "row">
+  <div class = "col-sm-6 col-sm-offset-3 paragraphError">
+    <a style="color: white">
+      ABINPC is Loading...
+    </a>
+  </div>
+</div>
+{{else if loadError}}
+  <div class = "row">
+    <div class = "col-sm-4 col-sm-offset-4 paragraphError">
+      <a style="color: white">
+	There was an error loading the scores. Please try again.
+      </a>
+      <br><a class="fakeButton3" {{action "refresh"}}>
+	Refresh Page
+      </a>
+    </div>
+  </div>
+{{else}}
 {{#unless allowPicks}}
   {{#if ASelected}}
     {{region-picks region="A" regionName=A teamNameMap=teamNameMap teamCodeMap=teamCodeMap players=players games=games action="back"}} 
@@ -146,6 +166,7 @@
   </div>
 </div>
 {{/unless}}
+{{/if}}
 <div class = "navOffset">
 </div>
 

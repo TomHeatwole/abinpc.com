@@ -14,5 +14,3 @@ To do:
     - Link Abinpc.com
   - Styles
     - Redo rules page
-  - Bug fix:
-    - Add loading screen for view-picks page

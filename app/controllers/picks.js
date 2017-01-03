@@ -28,6 +28,21 @@ export default Ember.Controller.extend({
   GCorrect: [],
   GIncorrect: [],
 
+  loadError: false,
+  loading: true,
+
+
+  init: function() {
+    this._super();
+    var self = this;
+    setTimeout(function() { //TODO: Implement correctly with callback instead of setTimeout
+      self.set('loading', false);
+      if (self.get('players').length === 0 || self.get('games').length === 0) {
+	self.set('loadError', true);
+      }
+    }, 2500);
+  },
+
   actions: {
     selectA() {
       this.set('ASelected', true);
