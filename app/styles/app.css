@@ -157,7 +157,7 @@ table {
 
 .trHead {
   color: WHITE;
-  background-color: #AE4E02;
+  background-color: #563d7c;
   
 }
 .tdNormal {
@@ -171,18 +171,18 @@ table {
 }
 .tdName {
   font-weight: bold;
-  color: darkslateblue;
+  color: #563d7c;
   background-color: #E6CCB4; 
 }
 .tdCorrect {
   font-weight: bold;
-  color: darkslateblue;
+  color: #563d7c;
   background-color: white;
 }
 .tdIncorrect {
   text-decoration: line-through;
   color: darkred;
-  background-color: #E6CCB4;
+  background-color: white;
 }
 
 td {
