@@ -12,3 +12,4 @@ To do:
 - Absolutely necessary before minimum viable product:
   - Deploy
     - Link Abinpc.com
+  - Mobile Views?

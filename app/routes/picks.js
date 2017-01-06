@@ -70,5 +70,11 @@ export default Ember.Route.extend({
       controller.set('players', playerSet);
       controller.set('games', gameSet);
     });
+  },
+
+  actions: {
+    refresh() {
+      location.reload();
+    }
   }
 });
