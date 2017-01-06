@@ -8,7 +8,7 @@ input {
 
 .title {
   font-size: 12vmin;
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: 'Monda', sans-serif;
 }
 
 .inputSmall {
@@ -74,11 +74,13 @@ p {
 }
 
 .head {
-  padding-right: 3vmin;
+  padding-right: 3.5vmin;
   text-align: center;
   font-family: 'Monda', sans-serif;
-  font-size: 5vmin;
-  line-height: 8vh;
+  font-size: 3.25vmax;
+  line-height: 17px;
+  vertical-align: middle;
+  height: 77px;
   color: #AE4E02;
   cursor: default;
 }

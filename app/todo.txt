@@ -3,13 +3,11 @@ To do:
 
 - Styles
   - Re-implement picker with radio buttons
-
+  - footer
 
 - Goodies
   - admin functions
 
 
 - Absolutely necessary before minimum viable product:
-  - Deploy
-    - Link Abinpc.com
-  - Mobile Views?
+  - new database
