@@ -19,12 +19,29 @@ export default Ember.Route.extend(NextGameMixin, {
     controller.set('selectedTeam2', false);
     controller.set('selectedGame', false);
     controller.set('nextGame', this.get('nextGame'));
-    
+   
     // Find out if we are currently allowing picks.
     var self = this;
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre'));
 
+    // Store goodie data
+      self.store.findAll('player').then(function(players) {
+        var count = 0;
+        var playerSet = [];
+        players.forEach(function() {
+          count++;
+        });
+        players.forEach(function(player) {
+          if (player.get('season') === admin.get('season')) {
+            playerSet.push(player); 
+          }
+          count--;
+          if (count === 0) {
+            controller.set('playerSet',playerSet);
+          }
+        });
+       });
       
     // Store the team names in a map
       self.store.findAll('teamset').then(function(sets){

@@ -1,0 +1,75 @@
+{{yield}}
+<div class = "container-fluid">
+<div class="row tableContainer">
+  <div class="col-sm-12" align="center">
+    <p>
+      In each box, the first input is the name of the goodie pick that displays in the view picks
+      section. The second input is the status of the goodie. Should be set to "TBD", "correct", or
+      "incorrect"
+    </p>
+    <table border="4" cellpadding="9" cellspacing="9" style="width:100%">
+      <tr class="trHead"> 
+	<td>Player</td>
+	<td>Low 36</td>
+	<td>Low 16</td>
+	<td>Low 4</td>
+	<td>Best region</td>
+	<td>Women's</td>
+	<td>NIT</td>
+	<td>Blowout</td>
+	<td>Conference out</td>
+        <td>Dark horse</td>
+        <td>Goodie Score</td>
+      </tr>
+      {{#each playerPicks as |player|}}
+        <tr>
+          <td>{{player.name}}</td>
+          <td>
+            {{input value=player.pickG1}}
+            <br> {{input value=player.sG1}}
+          </td>
+          <td>
+            {{input value=player.pickG2}}
+            <br>{{input value=player.sG2}}
+          </td>
+          <td>
+            {{input value=player.pickG3}}
+            <br>{{input value=player.sG3}}
+          </td>
+          <td>
+            {{input value=player.pickG4}}
+            <br>{{input value=player.sG4}}
+          </td>
+          <td>
+            {{input value=player.pickG5}}
+            <br>{{input value=player.sG5}}
+          </td>
+          <td>
+            {{input value=player.pickG6}}
+            <br>{{input value=player.sG6}}
+          </td>
+          <td>
+            {{input value=player.pickG7}}
+            <br>{{input value=player.sG7}}
+          </td>
+          <td>
+            {{input value=player.pickG8}}
+            <br>{{input value=player.sG8}}
+          </td>
+          <td>
+            {{input value=player.pickG9}}
+            <br>{{input value=player.sG9}}
+          </td>
+          <td>{{input value=player.goodieScore}}</td>
+        </tr>
+      {{/each}}
+    </table>
+    <br>
+    <button {{action "update"}}>Update</button>
+    {{#if success}}
+      <br>
+      <p style="color: green; text-align: center">You have updated the goodie data.</p>
+    {{/if}}
+  </div>
+</div>
+</div>

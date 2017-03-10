@@ -34,6 +34,7 @@ by my father and myself, and neither of us care what it looks like.
   Welcome, Admin! <br><br>
     <button {{action "newSeasonOn"}}>New season</button><br>
     <button {{action "enterResultsOn"}}>Enter results</button><br>
+    <button {{action "enterGoodiesOn"}}>Enter goodies</button><br>
     <button {{action "generateKeysOn"}}>Generate access keys</button><br>
     {{#if allowPicks}}
       <button {{action "stopAllowingPicks"}}>Stop allowing picks</button><br>
@@ -73,6 +74,9 @@ by my father and myself, and neither of us care what it looks like.
       {{#each newKeys as |key|}}
         <br>{{key}}
       {{/each}}
+    {{/if}}
+    {{#if goodiesMenu}}
+      {{goodies-setter playerSet=playerSet}}
     {{/if}}
     <br><br><button {{action "backToTasks"}}>Other admin tasks</button>
   {{/unless}}

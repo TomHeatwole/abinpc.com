@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
   keysMenu: false,
   seasonMenu: false, 
   resultsMenu: false,
+  goodiesMenu: false,
   taskSelected: false,
   newKeys: [],
 
@@ -23,6 +24,7 @@ export default Ember.Controller.extend({
 
   gameList: [],
   teamNames: {},
+  playerSet: [],
   selectedGame: false,
   selectedTeam1: false,
   selectedTeam2: false,
@@ -81,13 +83,23 @@ export default Ember.Controller.extend({
     newSeasonOn() {
       this.set('keysMenu', false);
       this.set('resultsMenu', false);
+      this.set('goodiesMenu', false);
       this.set('seasonMenu', true);
+      this.set('taskSelected', true);
+    },
+
+    enterGoodiesOn() {
+      this.set('keysMenu', false);
+      this.set('resultsMenu', false);
+      this.set('goodiesMenu', true);
+      this.set('seasonMenu', false);
       this.set('taskSelected', true);
     },
 
     enterResultsOn() {
       this.set('keysMenu', false);
       this.set('resultsMenu', true);
+      this.set('goodiesMenu', false);
       this.set('seasonMenu', false);
       this.set('taskSelected', true);
       this.set('selectedGame', false);
@@ -160,6 +172,7 @@ export default Ember.Controller.extend({
         this.set('keysMenu', false);
         this.set('resultsMenu', false);
         this.set('seasonMenu', false);
+        this.set('goodiesMenu', false);
         this.set('taskSelected', false);
         this.set('keyCount', 0);
       }
@@ -169,6 +182,7 @@ export default Ember.Controller.extend({
       this.set('keysMenu', true);
       this.set('resultsMenu', false);
       this.set('seasonMenu', false);
+      this.set('goodiesMenu', false);
       this.set('taskSelected', true);
       this.set('newKeys', []);
     },
@@ -208,6 +222,7 @@ export default Ember.Controller.extend({
       this.set('keysMenu', false);
       this.set('resultsMenu', false);
       this.set('seasonMenu', false);
+      this.set('goodiesMenu', false);
       this.set('taskSelected', false);
       this.set('keyCount', 0);
     }
