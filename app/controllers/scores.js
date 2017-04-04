@@ -49,7 +49,7 @@ export default Ember.Controller.extend({
 		rCount[5]++;
 		rScores[5] += 80;
 		rScores[5] += 15*self.findDifference(ii, game.get('winner')); // Multiplier is 15. 
-	      } else if (ii === 64) { // finals (round 6) {
+	      } else if (ii === 63) { // finals (round 6) {
 		rCount[6]++;
 		rScores[6] += 130;
 		rScores[6] += 20*self.findDifference(ii, game.get('winner')); // Multiplier is 20. 
