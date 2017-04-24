@@ -1,6 +1,10 @@
 # abinpc.com
 [Work in progress] Ultimately a replacement of abinpc.com
 
+If you want to check out the project and the https://abinpc.com/ URL is blocked by your browser, you can see my progress [here](https://abinpc-aac43.firebaseapp.com/).
+
+
+
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
 
