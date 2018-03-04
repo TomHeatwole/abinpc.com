@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
   FD: '',
   FW1: 'TBD',
   FW2: 'TBD',
-  F23: 'TBD',
+  FW3: 'TBD',
 
   failure: false,
   failure2: false,
@@ -107,9 +107,8 @@ export default Ember.Controller.extend({
 	if (this.get('model').get('pick6' + i) === 'TBD') {
 	  this.set('failure', true);
 	}
-        if (document.getElementById('F' + i).value === 'TBD' || document.getElementById('F' + i).value === '--Select Team--') {
-	  this.set('failure', true);
-	}
+    var natChamp = this.get('model').get('pick63');
+    if (natChamp != this.get('model').get('pick62') && this.get('model').get('pick61') != natChamp) this.set('failure', true);
       }
       if (!this.get('failure')) {
         this.set('lastScreen', true);
