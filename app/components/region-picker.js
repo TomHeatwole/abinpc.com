@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   names: {},
   winners: {},
   games: {},
+  matchUps: {},
   regionAdd: 0,
 
   failure1: false, // Used for validations, failure1 means some picks were not entered
@@ -44,6 +45,9 @@ export default Ember.Component.extend({
     this.set('names', names);
     this.set('winners', winners);
     this.set('games', games);
+    this.set('matchUps', ['', '1 16', '8 9', '5 12', '4 13',
+        '6 11', '3 14', '7 10', '2 15', 'w1 w2', 'w3 w4', 'w5 w6',
+        'w7 w8', 'w9 w10', 'w11 w12', 'w13, w14']);
   },
     getWinner: function(id) {
         var radio = document.getElementById(id).childNodes;
@@ -54,28 +58,24 @@ export default Ember.Component.extend({
 
   actions: {
     pick(v) {
-      var winners = this.get('winners');
-      console.log(v);
-      /*
-      for (var i = 1; i < 16; i++) {
-	var w = document.getElementById('p' + i).value; // Winner
-	if (w !== '--Select Team--' && w !== 'TBD') {
-	  if (winners[i] !== w && winners[i] !== 'TBD') { // Make sure this is a change
-	    for (var ii = i + 1; ii < 16; ii++) {
-	      if (winners[ii] === winners[i]) {
-		Ember.set(winners, '' + ii, 'TBD', true);
-	      }
-	    }
-	  }
-	  Ember.set(winners, '' + i, w, true);
-	} else {
-	  Ember.set(winners, '' + i, 'TBD', true);
-	}
-	// This line may need to get moved into the "continue" response
-	this.get('model').set('pick' + this.get('games')[i], this.get('teamCodeMap')[w]);
-      }
-      this.set('winners', winners);
-      */
+        var winners = this.get('winners');
+        var games = this.get("games");
+        var matchUps = this.get('matchUps');
+        var gameNumber = v.split(" ")[0];
+        var gameWinner = parseInt(v.split(" ")[1]) - 1;
+        var winnerSeed = matchUps[gameNumber].split(" ")[gameWinner];
+        var wName = "";
+        var wCode = "";
+        if (winnerSeed.charAt(0) == 'w') {
+            wName = winners[parseInt(winnerSeed.substring(1))];
+            wCode = this.get('teamCodeMap')[wName];
+        } else {
+            wCode = this.get('region') + winnerSeed;
+            wName = this.get('teamNameMap')[wCode];
+        }
+        Ember.set(winners, gameNumber, wName);
+	    this.get('model').set('pick' + '' + games[gameNumber], wCode);
+        this.set('winners', winners);
     },
     check() {
       this.set('failure1', false);
@@ -83,18 +83,13 @@ export default Ember.Component.extend({
       var games = this.get('games');
       for (var i = 1; i < 16; i++) {
 	var w = this.get('model').get('pick' + games[i]);
-	var w2 = document.getElementById('p' + i).value;
-	if (w === 'TBD' || w === '--Select Team--' || w2 === 'TBD' || w2 === '--Select Team--') {
+	if (w === 'TBD') {
 	  this.set('failure1', true);
 	}
     if (i > 8) {
 	  //2 * i - 16 and 2 * i - 17 'child' games of any given game
 	  if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
 		this.get('model').get('pick' + games[2*i - 17]) !== w) {
-	    this.set('failure2', true);
-	  }
-	  if (document.getElementById('p' + (2 * i - 16)).value !== w2 &&
-		document.getElementById('p' + (2 * i - 17)).value !== w2) {
 	    this.set('failure2', true);
 	  }
 	}
