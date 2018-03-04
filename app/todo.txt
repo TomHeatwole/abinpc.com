@@ -1,13 +1,5 @@
-To do:
-
-
-- Styles
-  - Re-implement picker with radio buttons
-  - footer
-
-- Goodies
-  - admin functions
-
-
-- Absolutely necessary before minimum viable product:
-  - new database
+- Re-implement picker with radio buttons
+- footer
+- Fix the error where on macbooks, the dropdown menu doesn't send the action every time
+- Fix the error where the final 4 teams didn't automatically go to the championship
+- Add feature for blog post/updates

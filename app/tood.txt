@@ -1,5 +1,0 @@
-- Make the website less ugly
-- Fix the error where on macbooks, the dropdown menu doesn't send the action every time
-- Re-implement the picker with radio buttons
-- Fix the error where the final 4 teams didn't automatically go to the championship
-- Add feature for blog post/updates
