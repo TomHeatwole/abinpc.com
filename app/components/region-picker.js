@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   winners: {},
   games: {},
   matchUps: {},
+  nextGameMap: {},
   regionAdd: 0,
 
   failure1: false, // Used for validations, failure1 means some picks were not entered
@@ -48,6 +49,7 @@ export default Ember.Component.extend({
     this.set('matchUps', ['', '1 16', '8 9', '5 12', '4 13',
         '6 11', '3 14', '7 10', '2 15', 'w1 w2', 'w3 w4', 'w5 w6',
         'w7 w8', 'w9 w10', 'w11 w12', 'w13, w14']);
+    this.set('nextGameMap', ['',9,9,10,10,11,11,12,12,13,13,14,14,15,15,21]);
   },
     getWinner: function(id) {
         var radio = document.getElementById(id).childNodes;
@@ -61,6 +63,7 @@ export default Ember.Component.extend({
         var winners = this.get('winners');
         var games = this.get("games");
         var matchUps = this.get('matchUps');
+        var nextGameMap = this.get("nextGameMap");
         var gameNumber = v.split(" ")[0];
         var gameWinner = parseInt(v.split(" ")[1]) - 1;
         var winnerSeed = matchUps[gameNumber].split(" ")[gameWinner];
@@ -72,6 +75,15 @@ export default Ember.Component.extend({
         } else {
             wCode = this.get('region') + winnerSeed;
             wName = this.get('teamNameMap')[wCode];
+        }
+        if (winners[gameNumber] != wName && winners[gameNumber] != 'TBD' && gameNumber < 15) {
+            var oldWinner = winners[gameNumber];
+            for (var i = nextGameMap[gameNumber]; i <= 15; i = nextGameMap[i]) {
+                if (winners[i] == oldWinner) {
+                    Ember.set(winners, "" + i, 'TBD');
+	                this.get('model').set('pick' + '' + games[gameNumber], 'TBD');
+                }
+            }
         }
         Ember.set(winners, gameNumber, wName);
 	    this.get('model').set('pick' + '' + games[gameNumber], wCode);

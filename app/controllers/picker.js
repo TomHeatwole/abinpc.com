@@ -120,13 +120,13 @@ export default Ember.Controller.extend({
         var gameWinner = parseInt(v.split(" ")[1]) - 1;
         var winnerName = "";
         if (gameNumber == '61') {
-            winnerName = (gameWinner == '0') ? this.get('FA'), this.get('FB');
+            winnerName = (gameWinner == '0') ? this.get('FA') : this.get('FB');
             this.set('FW1', winnerName);
         } else if (gameNumber == '62') {
-            winnerName = (gameWinner == '0') ? this.get('FC'), this.get('FD');
+            winnerName = (gameWinner == '0') ? this.get('FC') : this.get('FD');
             this.set('FW2', winnerName);
         } else {
-            winnerName = (gameWinner == '0') ? this.get('FW1'), this.get('FW2');
+            winnerName = (gameWinner == '0') ? this.get('FW1') : this.get('FW2');
             this.set('FW3', winnerName);
         }
       this.get('model').set('pick' + gameNumber, this.get('teamCodeMap')[winnerName]);
