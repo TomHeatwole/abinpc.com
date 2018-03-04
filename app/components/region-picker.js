@@ -45,10 +45,18 @@ export default Ember.Component.extend({
     this.set('winners', winners);
     this.set('games', games);
   },
+    getWinner: function(id) {
+        var radio = document.getElementById(id).childNodes;
+        if (radio[0].checked) return radio[0].value;
+        if (radio[1].checled) return radio[1].value;
+        return null;
+    },
 
   actions: {
-    pick() {
+    pick(v) {
       var winners = this.get('winners');
+      console.log(v);
+      /*
       for (var i = 1; i < 16; i++) {
 	var w = document.getElementById('p' + i).value; // Winner
 	if (w !== '--Select Team--' && w !== 'TBD') {
@@ -67,6 +75,7 @@ export default Ember.Component.extend({
 	this.get('model').set('pick' + this.get('games')[i], this.get('teamCodeMap')[w]);
       }
       this.set('winners', winners);
+      */
     },
     check() {
       this.set('failure1', false);
@@ -78,7 +87,7 @@ export default Ember.Component.extend({
 	if (w === 'TBD' || w === '--Select Team--' || w2 === 'TBD' || w2 === '--Select Team--') {
 	  this.set('failure1', true);
 	}
-        if (i > 8) {
+    if (i > 8) {
 	  //2 * i - 16 and 2 * i - 17 'child' games of any given game
 	  if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
 		this.get('model').get('pick' + games[2*i - 17]) !== w) {
@@ -91,7 +100,7 @@ export default Ember.Component.extend({
 	}
       }
       if (this.get('failure1') === false && this.get('failure2') === false) {
-	this.sendAction();     
+        this.sendAction();     
       }
     }
   } 

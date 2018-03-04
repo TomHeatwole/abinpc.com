@@ -89,7 +89,7 @@ p {
   cursor: default;
 }
 
-ul {
+.ulNav {
   background: #b8caed; /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, #0c2d70, #010a1c); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #0c2d70, #010a1c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  
@@ -175,6 +175,26 @@ li a:hover {
   text-decoration: none;
   cursor: default;
 }
+
+.fakeButton4 {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #E6CCB4;
+  margin-bottom: 2px;
+  text-align: center;
+  background-color: #010a1c;
+  color: #E6CCB4;
+}
+
+.fakeButton4:hover { 
+  background-color: #E6CCB4;
+  color: darkslateblue;
+  text-color: darkslateblue;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
 table {
   border-color: #CC9866;
 }
@@ -218,4 +238,5 @@ td {
 select {
   width: 200px;
 }
+
 
