@@ -34,6 +34,7 @@ export default Ember.Controller.extend({
   FD: '',
   FW1: 'TBD',
   FW2: 'TBD',
+  F23: 'TBD',
 
   failure: false,
   failure2: false,
@@ -114,16 +115,21 @@ export default Ember.Controller.extend({
         this.set('lastScreen', true);
       }
     },
-    pick() {
-      var winner1 = document.getElementById('F1').value;
-      var winner2 = document.getElementById('F2').value;
-      var winner3 = document.getElementById('F3').value; 
-      this.set('FW1', winner1);
-      this.set('FW2', winner2);
-      this.get('model').set('pick61', this.get('teamCodeMap')[winner1]);
-      this.get('model').set('pick62', this.get('teamCodeMap')[winner2]);
-      this.get('model').set('pick63', this.get('teamCodeMap')[winner3]);
-      
+    pick(v) {
+        var gameNumber = v.split(" ")[0];
+        var gameWinner = parseInt(v.split(" ")[1]) - 1;
+        var winnerName = "";
+        if (gameNumber == '61') {
+            winnerName = (gameWinner == '0') ? this.get('FA'), this.get('FB');
+            this.set('FW1', winnerName);
+        } else if (gameNumber == '62') {
+            winnerName = (gameWinner == '0') ? this.get('FC'), this.get('FD');
+            this.set('FW2', winnerName);
+        } else {
+            winnerName = (gameWinner == '0') ? this.get('FW1'), this.get('FW2');
+            this.set('FW3', winnerName);
+        }
+      this.get('model').set('pick' + gameNumber, this.get('teamCodeMap')[winnerName]);
     },
     submit() {
       var self = this;

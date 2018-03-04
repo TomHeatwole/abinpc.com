@@ -131,39 +131,34 @@
 	{{region-picker model=model region="D" regionName=DName teamNameMap=teamNameMap teamCodeMap=teamCodeMap action="cont"}}
       {{else if FSelected}}  
 	<div class = "row">
-	<div class= "col-sm-4 col-sm-offset-4 paragraph2" style="color: #010a1c; font-size: 18px">
+	<div class= "col-sm-6 col-sm-offset-3 paragraph2" style="color: #010a1c; font-size: 18px">
 	<div class= "row">
 	  <h1>Final Four</h1>
 	</div>
 	<div class="row" style="height:20px">
 	</div>
 	<div class="row">
-          <div class = "col-md-6" style="text-align: center" {{action "pick"}}>
-            <select id = "F1">
-              <option>--Select Team--</option>
-              <option>{{FA}}</option>
-              <option>{{FB}}</option>
-            </select>
-          </div>
+      <div id="p1" class="col-md-3" style="text-align: left">
+          <div class="fakeButton4" {{action "pick" "61 1"}}> {{FA}} </div>
+          <div class="fakeButton4" {{action "pick" "61 2"}}> {{FB}} </div>
+      </div>
 	</div>
 	<div class="row">
-          <div class = "col-md-6 col-md-offset-6" style="text-align: center" {{action "pick"}}>
-            <select id = "F3">
-              <option>--Select Team--</option>
-              <option>{{FW1}}</option>
-              <option>{{FW2}}</option>
-            </select>
-          </div>
+      <div class = "col-md-3"></div>
+      <div id="p1" class="col-md-3" style="text-align: left">
+          <div class="fakeButton4" {{action "pick" "63 1"}}> {{FW1}} </div>
+          <div class="fakeButton4" {{action "pick" "63 2"}}> {{FW2}} </div>
+      </div>
+      <div id="p1" class="col-md-3" style="text-align: center">
+          Nat Champ: {{FW3}}
+      </div>
 	</div>
 	<div class="row">
-          <div class = "col-md-6" style="text-align: center" {{action "pick"}}>
-            <select id = "F2">
-              <option>--Select Team--</option>
-              <option>{{FC}}</option>
-              <option>{{FD}}</option>
-            </select>
+      <div id="p1" class="col-md-3" style="text-align: left">
+          <div class="fakeButton4" {{action "pick" "62 1"}}> {{FC}} </div>
+          <div class="fakeButton4" {{action "pick" "62 2"}}> {{FD}} </div>
           </div>
-        </div>      
+      </div>      
 	<div class = "row" style="height: 20px">
 	</div>
 	<div class = "row">
