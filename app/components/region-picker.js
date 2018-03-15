@@ -94,17 +94,17 @@ export default Ember.Component.extend({
       this.set('failure2', false);
       var games = this.get('games');
       for (var i = 1; i < 16; i++) {
-	var w = this.get('model').get('pick' + games[i]);
-	if (w === 'TBD') {
-	  this.set('failure1', true);
-	}
-    if (i > 8) {
-	  //2 * i - 16 and 2 * i - 17 'child' games of any given game
-	  if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
-		this.get('model').get('pick' + games[2*i - 17]) !== w) {
-	    this.set('failure2', true);
-	  }
-	}
+        var w = this.get('model').get('pick' + games[i]);
+        if (w === 'TBD') {
+          this.set('failure1', true);
+        }
+        if (i > 8) {
+          //2 * i - 16 and 2 * i - 17 'child' games of any given game
+          if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
+            this.get('model').get('pick' + games[2*i - 17]) !== w) {
+            this.set('failure2', true);
+          }
+        }
       }
       if (this.get('failure1') === false && this.get('failure2') === false) {
         this.sendAction();     

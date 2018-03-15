@@ -2,3 +2,4 @@
 - Add feature for blog post/updates
 - Maybe deal with the manual delay at the beginning of every page or use actual loading screen?
 - Make sure accessKey gets deleted
+- get data from ESPN
