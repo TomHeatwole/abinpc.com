@@ -53,8 +53,8 @@ export default Ember.Component.extend({
   },
     getWinner: function(id) {
         var radio = document.getElementById(id).childNodes;
-        if (radio[0].checked) return radio[0].value;
-        if (radio[1].checled) return radio[1].value;
+        if (radio[0].checked) {return radio[0].value;}
+        if (radio[1].checled) {return radio[1].value;}
         return null;
     },
 
@@ -69,17 +69,17 @@ export default Ember.Component.extend({
         var winnerSeed = matchUps[gameNumber].split(" ")[gameWinner];
         var wName = "";
         var wCode = "";
-        if (winnerSeed.charAt(0) == 'w') {
+        if (winnerSeed.charAt(0) === 'w') {
             wName = winners[parseInt(winnerSeed.substring(1))];
             wCode = this.get('teamCodeMap')[wName];
         } else {
             wCode = this.get('region') + winnerSeed;
             wName = this.get('teamNameMap')[wCode];
         }
-        if (winners[gameNumber] != wName && winners[gameNumber] != 'TBD' && gameNumber < 15) {
+        if (winners[gameNumber] !== wName && winners[gameNumber] !== 'TBD' && gameNumber < 15) {
             var oldWinner = winners[gameNumber];
             for (var i = nextGameMap[gameNumber]; i <= 15; i = nextGameMap[i]) {
-                if (winners[i] == oldWinner) {
+                if (winners[i] === oldWinner) {
                     Ember.set(winners, "" + i, 'TBD');
 	                this.get('model').set('pick' + '' + games[gameNumber], 'TBD');
                 }

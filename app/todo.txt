@@ -7,3 +7,4 @@
 - Let me edit names along with everything else in the admin goodies screen OR first/last name fields
 - blog post feature could still be dope
 - Fix the horrible error message when people don't select a conference
+- Floating question mark for description of goodie pick

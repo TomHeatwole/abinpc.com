@@ -108,7 +108,7 @@ export default Ember.Controller.extend({
 	  this.set('failure', true);
 	}
     var natChamp = this.get('model').get('pick63');
-    if (natChamp != this.get('model').get('pick62') && this.get('model').get('pick61') != natChamp) this.set('failure', true);
+    if (natChamp !== this.get('model').get('pick62') && this.get('model').get('pick61') !== natChamp) {this.set('failure', true);}
       }
       if (!this.get('failure')) {
         this.set('lastScreen', true);
@@ -118,14 +118,14 @@ export default Ember.Controller.extend({
         var gameNumber = v.split(" ")[0];
         var gameWinner = parseInt(v.split(" ")[1]) - 1;
         var winnerName = "";
-        if (gameNumber == '61') {
-            winnerName = (gameWinner == '0') ? this.get('FA') : this.get('FB');
+        if (gameNumber === '61') {
+            winnerName = (gameWinner === '0') ? this.get('FA') : this.get('FB');
             this.set('FW1', winnerName);
-        } else if (gameNumber == '62') {
-            winnerName = (gameWinner == '0') ? this.get('FC') : this.get('FD');
+        } else if (gameNumber === '62') {
+            winnerName = (gameWinner === '0') ? this.get('FC') : this.get('FD');
             this.set('FW2', winnerName);
         } else {
-            winnerName = (gameWinner == '0') ? this.get('FW1') : this.get('FW2');
+            winnerName = (gameWinner === '0') ? this.get('FW1') : this.get('FW2');
             this.set('FW3', winnerName);
         }
       this.get('model').set('pick' + gameNumber, this.get('teamCodeMap')[winnerName]);
