@@ -8,3 +8,5 @@
 - blog post feature could still be dope
 - Fix the horrible error message when people don't select a conference
 - Floating question mark for description of goodie pick
+- Table showing final 4 in 'view final 4'
+- 'make all incorrect' button for goodies
