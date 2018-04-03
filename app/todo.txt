@@ -1,4 +1,3 @@
-- footer
 - Add feature for blog post/updates
 - Maybe deal with the manual delay at the beginning of every page or use actual loading screen?
 - Make sure accessKey gets deleted
@@ -10,3 +9,4 @@
 - Floating question mark for description of goodie pick
 - Table showing final 4 in 'view final 4'
 - 'make all incorrect' button for goodies
+- Final game does not show up in enter results
