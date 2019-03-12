@@ -63,6 +63,16 @@
           <td>{{input value=player.goodieScore}}</td>
         </tr>
       {{/each}}
+      <tr>
+        <td> BULK CONTROLS </td>
+        {{#each bulkData as |b|}}
+          <td>
+            {{input value=b.correct}} (correct value) 
+            <br><br>
+            {{input value=b.points}} (point value)
+          </td>
+        {{/each}}
+      </tr>
     </table>
     <br>
     <button {{action "update"}}>Update</button>
