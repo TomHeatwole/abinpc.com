@@ -95,7 +95,7 @@ export default Ember.Controller.extend({
 	}
       }
       var displayNames = [];
-      for (i = 61; i < 64; i++) {
+      for (i = 57; i < 64; i++) {
 	var names = [];
 	names['team1'] = this.get('teamNameMap')[this.get('games')[i].get('team1')];
 	names['team2'] = this.get('teamNameMap')[this.get('games')[i].get('team2')];
@@ -113,7 +113,7 @@ export default Ember.Controller.extend({
 	var row3F = []; // incorrect
 	row1F['name'] = this.get('players')[i].get('name');
 	row1F['accessKey'] = this.get('players')[i].get('accessKey');
-	for (var ii = 61; ii < 64; ii++) {
+	for (var ii = 57; ii < 64; ii++) {
 	  row1F['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + ii))];
 	  if (this.get('games')[ii].get('winner') === 'TBD') {
 	    row2F['g' + ii] = false;

@@ -8,7 +8,8 @@ export default Ember.Component.extend({
   r1: false, // Determine which round these picks are for
   r2: false,
   r3: false,
-  F: false, // Final 4
+  F: false, // Championship & Champion
+  F0: false, // Final 4 
   G: false, // Goodies
   pCorrect: [],
   pIncorect: [],
@@ -31,6 +32,9 @@ export default Ember.Component.extend({
       case 5: // 5 if for Goodies
 	this.set('G', true);
 	break;	
+      case 6:
+    this.set('F0', true);
+    break;
     }
     var pCorrect = [];
     var pIncorrect = [];
@@ -38,7 +42,6 @@ export default Ember.Component.extend({
     var incorrect = this.get('incorrect');
     pCorrect = correct[this.get('player').get('accessKey')];
     pIncorrect = incorrect[this.get('player').get('accessKey')]; 
-    console.log(this.get('player'));
     this.set('pCorrect', pCorrect);
     this.set('pIncorrect', pIncorrect);
   }

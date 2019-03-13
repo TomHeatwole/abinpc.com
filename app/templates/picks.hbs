@@ -47,9 +47,29 @@
     </div>
     <br>
     <br>
-    <div class="row tableContainer">
-      <div class="col-sm-12" align="center">
-	<table border="4" cellpadding="3" cellspacing="3">
+      <div class = "navOffset">
+      </div>
+      <div class = "row">
+	<div class= "col-sm-6" style="text-align: center">
+    <h2>Final 4</h2><br>
+    <!-- TODO: Figure out how the fuck to make this the final 4 table isntead of finals -->
+    <table border="4" cellpadding="3" cellspacing="3" style="width: 100%">
+	  <tr class="trHead"> 
+	    <td>Player</td>
+	    <td> {{A}} </td>
+	    <td> {{B}} </td>
+	    <td> {{C}} </td>
+	    <td> {{D}} </td>
+	  </tr>
+      <!-- TODO: probably create round=6 for this and set appropriate data in controller or route -->
+	  {{#each FPicks as |playerPicks|}}
+	    {{view-picks-row player=playerPicks correct=FCorrect incorrect=FIncorrect round=6}}
+	  {{/each}}
+    </table> 
+	</div>
+	<div class = "col-sm-6" style = "text-align: center">
+    <h2>Championship & Champion</h2><br>
+    <table border="4" cellpadding="3" cellspacing="3" style="width: 100%">
 	  <tr class="trHead"> 
 	    <td>Player</td>
 	    <td>{{displayNames.61.team1}} vs. {{displayNames.61.team2}}</td>
@@ -59,9 +79,16 @@
 	  {{#each FPicks as |playerPicks|}}
 	    {{view-picks-row player=playerPicks correct=FCorrect incorrect=FIncorrect round=4}}
 	  {{/each}}
-	</table>
-      </div>
-    </div>
+    </table> 
+	</div>
+  </div>
+
+
+
+
+
+
+
   {{else if GSelected}}
     <div class="row">
       <div class = "col-sm-2 col-sm-offset-2" style="font-size:25px; text-align: center">

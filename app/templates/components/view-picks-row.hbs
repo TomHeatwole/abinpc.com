@@ -195,4 +195,33 @@
     <td class="tdNormal">{{player.G9}}</td>
   {{/if}}
   <td class="tdBold">{{player.goodieScore}}</td>
+{{else if F0}}
+  {{#if pCorrect.g57}}
+    <td class = "tdCorrect">{{player.p57}}</td>
+  {{else if pIncorrect.g57}}
+    <td class = "tdIncorrect">{{player.p57}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p57}}</td>
+  {{/if}}
+  {{#if pCorrect.g58}}
+    <td class = "tdCorrect">{{player.p58}}</td>
+  {{else if pIncorrect.g58}}
+    <td class = "tdIncorrect">{{player.p58}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p58}}</td>
+  {{/if}}
+  {{#if pCorrect.g59}}
+    <td class = "tdCorrect">{{player.p59}}</td>
+  {{else if pIncorrect.g59}}
+    <td class = "tdIncorrect">{{player.p59}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p59}}</td>
+  {{/if}}
+  {{#if pCorrect.g60}}
+    <td class = "tdCorrect">{{player.p60}}</td>
+  {{else if pIncorrect.g60}}
+    <td class = "tdIncorrect">{{player.p60}}</td>
+  {{else}}
+    <td class="tdNormal">{{player.p60}}</td>
+  {{/if}}
 {{/if}}
