@@ -64,7 +64,21 @@
         </tr>
       {{/each}}
       <tr>
-        <td> BULK CONTROLS </td>
+        <td>
+             BULK CONTROLS <br>
+             <span class="info">
+                <i class="fa fa-question-circle"></i>
+                <span class="tooltiptext">
+                    The 'correct value' input accepts a comma separated list and sets players with any of the given values in that column's goodie to 'correct' and everyone else to 'incorrect'.<br>
+                    Ex. entering "Syracuse, Villanova" would set set player with either of those picks to correct and everyone else to incorrect.
+                    The 'correct value' input ONLY affects the status of the pick and WILL NOT affect the goodie score unless the 'points' input is also used.
+                    <br><br>
+                    The 'points' input will add the given # of points to everyone's goodie score if their status is set to 'correct' for the column.
+                    It can be used independently from the 'correct value' field, or they can be used at the same time.
+                    If they're used at the same time, the 'correct value' field will FIRST set the picks to correct/incorrect and then the 'points' field will add points to the newly 'correct' picks.
+                </span>
+            </span>
+        </td>
         {{#each bulkData as |b|}}
           <td>
             {{input value=b.correct}} (correct value) 
@@ -72,6 +86,7 @@
             {{input value=b.points}} (point value)
           </td>
         {{/each}}
+        <td></td>
       </tr>
     </table>
     <br>
