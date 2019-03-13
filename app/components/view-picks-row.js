@@ -38,6 +38,7 @@ export default Ember.Component.extend({
     var incorrect = this.get('incorrect');
     pCorrect = correct[this.get('player').get('accessKey')];
     pIncorrect = incorrect[this.get('player').get('accessKey')]; 
+    console.log(this.get('player'));
     this.set('pCorrect', pCorrect);
     this.set('pIncorrect', pIncorrect);
   }

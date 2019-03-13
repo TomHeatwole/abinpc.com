@@ -152,6 +152,7 @@ export default Ember.Controller.extend({
 	var row3G = []; // incorrect
 	row1G['name'] = this.get('players')[i].get('name');
 	row1G['accessKey'] = this.get('players')[i].get('accessKey');
+    row1G['goodieScore'] = this.get('players')[i].get('goodieScore');
 	for (var ii = 1; ii < 10; ii++) {
 	  row1G['G' + ii] = this.get('players')[i].get('pickG' + ii);
 	  if (this.get('players')[i].get('sG' + ii) === 'TBD') { 
