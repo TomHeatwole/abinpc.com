@@ -5,13 +5,23 @@
 <div class="navOffset">
 </div>
 {{#unless allowPicks}}
-<div class = "row">
-  <div class = "col-sm-6 col-sm-offset-3 paragraphError">
-    <a style="color: white">
-      We are not currently accepting picks. Come back on selection Sunday!
-    </a>
-  </div>
-</div>
+    {{#unless loading}}
+    <div class = "row">
+      <div class = "col-sm-6 col-sm-offset-3 paragraphError">
+        <a style="color: white">
+          We are not currently accepting picks. Come back on selection Sunday!
+        </a>
+      </div>
+    </div>
+    {{else}}
+    <div class = "row">
+      <div class = "col-sm-6 col-sm-offset-3 paragraphError">
+        <a style="color: white">
+          ABINPC is Loading...
+        </a>
+      </div>
+    </div>
+    {{/unless}}
 {{else}}
   {{#unless lastScreen}}
     {{#unless validKey}}

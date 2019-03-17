@@ -40,6 +40,8 @@ export default Ember.Controller.extend({
   failure2: false,
   lastScreen: false,
   done: false,
+
+  loading: true,
   
   actions: {
     enterKey() {

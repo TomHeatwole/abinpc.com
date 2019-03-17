@@ -26,7 +26,7 @@ export default Ember.Route.extend({
     var self=this;
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre')); 
-
+      controller.set('loading', false);
       self.store.findAll('teamset').then(function(sets){
 	sets.forEach(function(set) {
 	  if (set.get('season') === admin.get('season')) {
