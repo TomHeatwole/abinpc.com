@@ -264,3 +264,12 @@ select {
 .info:hover .tooltiptext {
   visibility: visible;
 } 
+
+.noIndent {
+    text-indent: 0px;
+    margin-left: 38px;
+}
+
+.leftLabel {
+    text-align: left;
+}
