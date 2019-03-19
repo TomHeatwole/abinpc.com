@@ -14,7 +14,6 @@ export default Ember.Component.extend({
           {correct: "", points: 0, name: "G6"},
           {correct: "", points: 0, name: "G7"},
           {correct: "", points: 0, name: "G8"},
-          {correct: "", points: 0, name: "G9"},
       ]);
   },
   init: function() {
@@ -32,7 +31,7 @@ export default Ember.Component.extend({
     update: function() {
       var checkBulkCorrect = [];
       var checkBulkPoints = [];
-      for (var i = 0; i < 9; i++) {
+      for (var i = 0; i < 8; i++) {
           if (this.bulkData[i].correct !== "") {
               checkBulkCorrect.push({name: this.bulkData[i].name, values: this.bulkData[i].correct.split(",")});
           }
@@ -40,7 +39,6 @@ export default Ember.Component.extend({
               checkBulkPoints.push({name: this.bulkData[i].name, value: this.bulkData[i].points});
           }
       }
-      var self = this;
       this.get('playerSet').forEach(function(player) {
         checkBulkCorrect.forEach(function(check) {
             var correct = false;
