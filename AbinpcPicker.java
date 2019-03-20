@@ -24,8 +24,16 @@ public class AbinpcPicker {
 		System.setProperty("webdriver.chrome.driver", "/Users/tom/Downloads/chromedriver");
 		WebDriver driver;
 		driver = new ChromeDriver(options);
-		if (accessKey.length() == 0) {
-			// TODO: Generate an access key GoB3IK0Y
+		if (accessKey.length() == 11) {
+			driver.get("localhost:4200/admin");
+			driver.findElement(By.tagName("input")).sendKeys(accessKey);
+			driver.findElement(By.tagName("button")).click();
+			List<WebElement> buttons = driver.findElements(By.tagName("button"));
+			while (buttons.size() != 5) buttons = driver.findElements(By.tagName("button"));
+			buttons.get(3).click();
+			driver.findElement(By.tagName("input")).sendKeys("1");
+			driver.findElements(By.tagName("button")).get(0).click();
+			accessKey = driver.findElement(By.tagName("p")).getText();
 		}
 		driver.get("localhost:4200/picker");
 		List<WebElement> inputs = driver.findElements(By.tagName("input"));
@@ -36,7 +44,6 @@ public class AbinpcPicker {
 		for (int i = 0; i < 4; i++) {
 			driver.findElement(By.className("fakeButton")).click();
 			List<WebElement> buttons = driver.findElements(By.className("fakeButton4"));
-			//while (buttons.size() == 0) buttons = driver.findElements(By.className("fakeButton"));
 			for (int j = 0; j < 30; j += 2) buttons.get(j).click();
 			driver.findElement(By.tagName("button")).click();
 		}

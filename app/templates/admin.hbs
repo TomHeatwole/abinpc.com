@@ -72,7 +72,7 @@ by my father and myself, and neither of us care what it looks like.
       How many keys do you want to generate? {{input value=keyCount}}
       <button {{action "generate"}}>generate</button>
       {{#each newKeys as |key|}}
-        <br>{{key}}
+        <br><p>{{key}}</p>
       {{/each}}
     {{/if}}
     {{#if goodiesMenu}}
