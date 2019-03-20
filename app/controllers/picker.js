@@ -139,6 +139,7 @@ export default Ember.Controller.extend({
       if (document.getElementById('G7').value === '--Select Conference--') {
 	this.set('failure2', true);
       } else {
+	this.get('model').set('pickG8', document.getElementById('G8').value);
 	this.get('model').set('pickG7', document.getElementById('G7').value);
 	this.get('model').set('pickG6', document.getElementById('G6').value);
 	for (var i = 5; i < 9; i++) {
