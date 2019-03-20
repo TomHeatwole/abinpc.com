@@ -135,10 +135,14 @@ export default Ember.Controller.extend({
     },
     submit() {
       var self = this;
-      this.set('failure2', false);
-      if (document.getElementById('G7').value === '--Select Conference--') {
-	this.set('failure2', true);
-      } else {
+      var f2 = false;
+      for (var i = 6; i < 9; i++) {
+        if (document.getElementById('G' + i).value.charAt(0) === '-') {
+          f2 = true;
+        }
+      }
+      this.set('failure2', f2);
+    if (f2) return;
 	this.get('model').set('pickG8', document.getElementById('G8').value);
 	this.get('model').set('pickG7', document.getElementById('G7').value);
 	this.get('model').set('pickG6', document.getElementById('G6').value);
@@ -147,7 +151,6 @@ export default Ember.Controller.extend({
 	    this.set('failure2', true);
 	  }
 	}
-      }
       if (!this.get('failure2')) {
 	self.store.findAll('key').then(function(keys) {
   	  keys.forEach(function(key) {
