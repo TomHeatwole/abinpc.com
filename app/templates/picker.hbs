@@ -224,7 +224,12 @@
 	    </a>
 	  </div>
 	  <div class = "col-sm-8">
-	    {{input value=model.pickG6}}<br>
+	    <select id = "G6" style="width: 95%">
+	      <option>--Select Blowout Winner--</option>
+          {{#each teamNames as |name|}}
+            <option>{{name}}</option>
+          {{/each}}
+	    </select>
 	  </div>
 	</div>
 	<div class = "row" style="height: 8px">

@@ -140,6 +140,7 @@ export default Ember.Controller.extend({
 	this.set('failure2', true);
       } else {
 	this.get('model').set('pickG7', document.getElementById('G7').value);
+	this.get('model').set('pickG6', document.getElementById('G6').value);
 	for (var i = 5; i < 9; i++) {
 	  if (!this.get('model').get('pickG' + i) || this.get('model').get('pickG' + i).length > 23) {
 	    this.set('failure2', true);

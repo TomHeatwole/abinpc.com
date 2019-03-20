@@ -23,6 +23,7 @@ export default Ember.Route.extend({
     controller.set('noneSelected',true);
     var map1 = {};
     var map2 = {};
+    var names = [];
     var self=this;
     this.store.findRecord('admin', 1).then(function(admin) {
       controller.set('allowPicks', admin.get('pre')); 
@@ -43,11 +44,13 @@ export default Ember.Route.extend({
 	  	region = "D";
               }
 	      code = region + (i%16 + 1); 
+          names.push(set.get(code));
 	      map1[code] = '' + (i%16 + 1) + '. '+ set.get(code); //Eaxmple: map[A1] = 1. Kentucky
 	      map2['' + (i%16 + 1) + '. '+ set.get(code)] = code; //Example: map[1. Kentucky] = A1
 	      if (code === "D16") {
 		controller.set('teamNameMap', map1);
 		controller.set('teamCodeMap', map2);
+        controller.set('teamNames', names);
 	      }
 	    }
 	  }
