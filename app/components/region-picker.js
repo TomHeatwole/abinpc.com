@@ -12,8 +12,7 @@ export default Ember.Component.extend({
   nextGameMap: {},
   regionAdd: 0,
 
-  failure1: false, // Used for validations, failure1 means some picks were not entered
-  failure2: false, // Used for validations, failure2 means some pikcs did not make sense
+  failure1: false, // Used for validations
 
   init: function() {
     this._super();
@@ -60,6 +59,7 @@ export default Ember.Component.extend({
 
   actions: {
     pick(v) {
+        this.set('failure', false);
         var winners = this.get('winners');
         var games = this.get("games");
         var matchUps = this.get('matchUps');
@@ -90,25 +90,16 @@ export default Ember.Component.extend({
         this.set('winners', winners);
     },
     check() {
-      this.set('failure1', false);
-      this.set('failure2', false);
+      this.set('failure', false);
       var games = this.get('games');
       for (var i = 1; i < 16; i++) {
         var w = this.get('model').get('pick' + games[i]);
         if (w === 'TBD') {
-          this.set('failure1', true);
-        }
-        if (i > 8) {
-          //2 * i - 16 and 2 * i - 17 'child' games of any given game
-          if (this.get('model').get('pick' + games[2*i - 16]) !== w &&
-            this.get('model').get('pick' + games[2*i - 17]) !== w) {
-            this.set('failure2', true);
-          }
+          this.set('failure', true);
+          return;
         }
       }
-      if (this.get('failure1') === false && this.get('failure2') === false) {
-        this.sendAction();     
-      }
+      this.sendAction();     
     }
   } 
 });

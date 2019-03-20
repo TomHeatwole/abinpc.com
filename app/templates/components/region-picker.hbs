@@ -117,13 +117,7 @@
 <div class="row" style="height:14px">
 </div>
 
-{{#if failure2}} {{!-- Check failure2 first because of edge case where failure2 processes as failure1--}}
-  <center>
-    <div class = "alert alert-danger" style="width: 72%">
-      Error: Some picks do not make sense with previous picks.
-    </div>
-  </center>
-{{else if failure1}}
+{{#if failure}}
   <center>
     <div class = "alert alert-danger" style="width: 72%">
       Error: Please make sure that all of the picks have been entered.
