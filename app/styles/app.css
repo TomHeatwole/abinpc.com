@@ -132,6 +132,10 @@ li a:hover {
   color: white;
 }
 
+.buttonWidth {
+    width: 100%;
+}
+
 .fakeButton:hover { 
   background-color: #FFCCB4;
   color: darkslateblue;
