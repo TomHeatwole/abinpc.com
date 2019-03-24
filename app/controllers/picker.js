@@ -142,11 +142,11 @@ export default Ember.Controller.extend({
         }
       }
       this.set('failure2', f2);
-    if (f2) return;
+    if (f2) {return;}
 	this.get('model').set('pickG8', document.getElementById('G8').value);
 	this.get('model').set('pickG7', document.getElementById('G7').value);
 	this.get('model').set('pickG6', document.getElementById('G6').value);
-	for (var i = 5; i < 9; i++) {
+	for (i = 5; i < 9; i++) {
 	  if (!this.get('model').get('pickG' + i) || this.get('model').get('pickG' + i).length > 23) {
 	    this.set('failure2', true);
 	  }
