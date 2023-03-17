@@ -40,7 +40,9 @@ export default Ember.Component.extend({
           }
       }
       this.get('playerSet').forEach(function(player) {
-          if (player.get('goodieScore') === "DELETE") player.deleteRecord(); 
+          if (player.get('goodieScore') === "DELETE") {
+              player.deleteRecord(); 
+          }
         checkBulkCorrect.forEach(function(check) {
             var correct = false;
             check.values.forEach(function(value) {
