@@ -63,17 +63,17 @@ export default Ember.Component.extend({
       row1['name'] = this.get('players')[i].get('name');
       row1['accessKey'] = this.get('players')[i].get('accessKey');
       for (var ii = 1; ii < 16; ii++) {
-	row1['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + gameNumbers[ii]))];
-	if (regionGames[ii].get('winner') === 'TBD') {
-	  row2['g' + ii] = false;
-	  row3['g' + ii] = (eliminated.includes(this.get('players')[i].get('pick' + gameNumbers[ii]))); 
-	} else if (row1['p' + ii] === this.get('teamNameMap')[regionGames[ii].get('winner')]) {
-	  row2['g' + ii] = true;
-	  row3['g' + ii] = false;
-	} else {
-	  row2['g' + ii] = false;
-	  row3['g' + ii] = true;
-	}
+        row1['p' + ii] = this.get('teamNameMap')[(this.get('players')[i].get('pick' + gameNumbers[ii]))];
+        if (regionGames[ii].get('winner') === 'TBD') {
+          row2['g' + ii] = false;
+          row3['g' + ii] = (eliminated.includes(this.get('players')[i].get('pick' + gameNumbers[ii]))); 
+        } else if (row1['p' + ii] === this.get('teamNameMap')[regionGames[ii].get('winner')]) {
+          row2['g' + ii] = true;
+          row3['g' + ii] = false;
+        } else {
+          row2['g' + ii] = false;
+          row3['g' + ii] = true;
+        }
       }
       picks.push(row1);
       correct[this.get('players')[i].get('accessKey')] = row2;
