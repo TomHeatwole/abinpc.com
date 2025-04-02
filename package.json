@@ -45,6 +45,7 @@
     "loader.js": "^4.0.1"
   },
   "dependencies": {
+    "bower": "^1.8.14",
     "ember": "^1.0.3",
     "ember-cli": "^3.12.1",
     "ember-emberfire-find-query": "^1.0.3"
